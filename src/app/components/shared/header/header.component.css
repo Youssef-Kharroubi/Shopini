@@ -1,0 +1,28 @@
+header{
+  background-color: burlywood;
+  padding: 10px;
+
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+a:hover{
+  color:black;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.logout{
+  border-radius: 12px;
+  background-color: burlywood;
+  padding: 5px;
+  color:white;
+  border: black;
+}
+.logout:hover{
+  color:black;
+  border:white;
+}

@@ -4,6 +4,7 @@ import {AsyncPipe, NgIf, NgOptimizedImage} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
+import { HeaderComponent } from './components/shared/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css'],
   standalone: true,
   providers: [AuthService],
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgOptimizedImage, HttpClientModule, AsyncPipe, NgIf],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgOptimizedImage, HttpClientModule, AsyncPipe, NgIf, HeaderComponent],
 })
 export class AppComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>; // Use ! to declare without immediate initialization

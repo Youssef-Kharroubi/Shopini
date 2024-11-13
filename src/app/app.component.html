@@ -8,27 +8,7 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <body>
 
-<header class="row">
-  <div class="col d-flex justify-content-start">
-    <a class="m-2" routerLink="/home">Home</a>
-    <a class="m-2" routerLink="/products">Products</a>
-    <a class="m-2" routerLink="/about">About</a>
-    <a class="m-2" routerLink="/contact">Contact</a>
-  </div>
-
-  <!-- Show login and sign-up links if not logged in -->
-  <div class="d-flex justify-content-end col" *ngIf="!(logedInUser); else loggedIn">
-    <a class="m-2" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
-    <a class="m-2" routerLink="/signup">SignUp</a>
-  </div>
-
-  <!-- Show logout button if logged in -->
-  <ng-template #loggedIn>
-    <div class="d-flex justify-content-end col">
-      <button class="logout" (click)="onLogout()">Logout</button>
-    </div>
-  </ng-template>
-</header>
+<app-header></app-header>
 
 
 
