@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, catchError, map, Observable} from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import {customer} from '../models/customer';
 
 @Injectable({
   providedIn: 'root',
@@ -15,12 +14,12 @@ export class AuthService {
   public user$: Observable<any> = this.userSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
-  signUp(username: string, password: string, email: string): Observable<any> {
+  signUp(username: string, password: string, email: string,role: string): Observable<any> {
     const newCustomer = {
       username,
       password,
       email,
-      role: 'customer'
+      role
     };
 
     console.log('Sending POST request with data:', newCustomer);  // Debugging line

@@ -13,11 +13,25 @@
       "role": "customer"
     },
     {
-      "id": "9403",
-      "username": "Youssef",
-      "password": "Med",
+      "id": "916a",
+      "username": "siwarou",
+      "password": "siwar",
       "email": "",
       "role": "customer"
+    },
+    {
+      "id": "6214",
+      "username": "test69",
+      "password": "test",
+      "email": "",
+      "role": ""
+    },
+    {
+      "id": "496b",
+      "username": "testest",
+      "password": "test",
+      "email": "",
+      "role": "admin"
     }
   ]
 }
