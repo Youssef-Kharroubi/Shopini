@@ -1,7 +1,7 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {BehaviorSubject, catchError, map, Observable} from 'rxjs';
+import {BehaviorSubject, catchError, map, Observable, throwError} from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
@@ -9,7 +9,9 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/customers'; // Replace with your API URL
+  private apiUrl = 'http://localhost:3000/customers';
+  private loggedIn = new BehaviorSubject<boolean>(false);
+  public readonly loggedIn$ = this.loggedIn.asObservable();
   private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   public user$: Observable<any> = this.userSubject.asObservable();
 
@@ -36,21 +38,39 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { username, password }).pipe(
-      tap((response) => {
-        // Store the token and role in localStorage
-        localStorage.setItem('access_token', response.access_token);
-        localStorage.setItem('role', response.role); // Store role (admin or customer)
-        this.userSubject.next(response);
-      })
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      map((users) => {
+        const user = users.find((u) => u.username === username && u.password === password);
+
+        if (user) {
+          this.loggedIn.next(true);
+          const token = this.generateToken();
+          localStorage.setItem('authToken', token);
+          if (user.role === 'admin') {
+            this.router.navigate(['/home']);
+          } else {
+            this.router.navigate(['/products']);
+          }
+          return user; // Return user data for potential further use
+        } else {
+          throw new Error('Invalid username or password');
+        }
+      }),
+      catchError((error) => throwError(() => new Error(error.message || 'Login error')))
     );
+
+  }
+  private generateToken(): string {
+    return Math.random().toString(36).substring(2);
   }
 
-  logout(): void {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('role');
-    this.userSubject.next(null);
-    this.router.navigate(['/login']);
+  logout() {
+    localStorage.removeItem('authToken');
+    this.loggedIn.next(false);
+
+  }
+  private checkAuthStatus(): boolean {
+    return !!localStorage.getItem('authToken');
   }
 
   getToken(): string | null {

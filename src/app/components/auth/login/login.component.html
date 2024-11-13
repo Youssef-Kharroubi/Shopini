@@ -4,14 +4,14 @@
     Login
   </h1>
 <div class="loginZone d-flex justify-content-center">
-<form>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
   <div class="row">
-  <label class="mt-1">UserName</label>
-  <input class="mt-2">
+  <label class="mt-1" >UserName</label>
+  <input class="mt-2" formControlName="username">
   </div>
   <div class="row">
   <label class="mt-1">Password</label>
-  <input class="mt-2">
+  <input class="mt-2" formControlName="password" type="password">
   </div>
   <div class="  row ms-5  col-8 mt-4">
   <button class="loginButton">Login</button>
