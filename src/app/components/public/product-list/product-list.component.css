@@ -1,0 +1,20 @@
+.card-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(245, 245, 245, 0);
+}
+.product{
+  height: 100vh; /* Full viewport height */
+  background-image: url('../../../../../public/test.jpg'); /* Your hero image path */
+  background-size: cover; /* Scale the image to cover the entire hero */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Avoid tiling */
+  align-items: center; /* Center content vertically */
+  color: white; /* Make text white for contrast */
+  text-align: center;
+  position: relative; /* Allow overlay */
+  overflow: hidden; /* Hide overflow in case of animations */
+}

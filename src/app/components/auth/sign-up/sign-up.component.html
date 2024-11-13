@@ -1,0 +1,60 @@
+
+<h1 class="d-flex justify-content-center mt-4">Sign-Up</h1>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSignUp()" class=" Form  justify-content-center ms-auto me-auto mt-5">
+  <div class="row d-flex">
+    <div class="  col-lg-6  w-50 p-5 ">
+      <div class="row m-2">
+        <label class="w-50" for="firstName">First Name</label>
+        <input id="firstName" formControlName="firstName" class="w-50" type="text">
+        <div *ngIf="profileForm.get('firstName') && profileForm.get('firstName')">
+          <small class="error">First name is required.</small>
+        </div>
+      </div>
+      <div class="row m-2">
+        <label class="w-50" for="street">Street</label>
+        <input id="street" class="w-50" formControlName="street" type="text">
+      </div>
+      <div class="row m-2">
+        <label class="w-50" for="city">City</label>
+        <input id="city" class="w-50" formControlName="city" type="text">
+      </div>
+      <div class="row m-2">
+        <label class="w-50" for="firstName">Password</label>
+        <input id="Password" formControlName="Password" type="password" class="w-50" >
+        <div *ngIf="profileForm.get('Password') && profileForm.get('Password')">
+          <small class="error">Password name is required.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6  w-50 p-5  ">
+      <div class="row m-2">
+        <label class="w-50" for="lastName">Last Name</label>
+        <input id="lastName" class="w-50" formControlName="lastName" type="text">
+        <div *ngIf="profileForm.get('lastName') && profileForm.get('lastName')">
+          <small class="error">Last name is required.</small>
+        </div>
+      </div>
+      <div class="row m-2">
+        <label class="w-50" for="state">State</label>
+        <input id="state" class="w-50" formControlName="state" type="text">
+      </div>
+      <div class="row m-2">
+        <label  class="w-50" for="zip">ZIP Code</label>
+        <input id="zip" class="w-50" formControlName="zip" type="text">
+      </div>
+      <div class="row m-2">
+        <label id="role" for="role">Role</label>
+        <input id="role" class="w-50" formControlName="role" type="checkbox">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12  d-flex justify-content-center m-2">
+      <button type="submit" class="w-25" >Submit</button>
+    </div>
+  </div>
+
+</form>
+

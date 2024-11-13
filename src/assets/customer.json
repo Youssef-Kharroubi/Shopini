@@ -1,0 +1,23 @@
+{
+  "customers": [
+    {
+      "id": "26ca",
+      "username": "alo",
+      "password": "1234"
+    },
+    {
+      "id": "89d0",
+      "username": "test",
+      "password": "test",
+      "email": "",
+      "role": "customer"
+    },
+    {
+      "id": "9403",
+      "username": "Youssef",
+      "password": "Med",
+      "email": "",
+      "role": "customer"
+    }
+  ]
+}

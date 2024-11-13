@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Earbuds",
+    "description": "High-quality wireless earbuds with noise-canceling feature.",
+    "price": 49.99,
+    "category": "Electronics",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Smartphone Stand",
+    "description": "Adjustable stand for smartphones, compatible with most devices.",
+    "price": 15.99,
+    "category": "Accessories",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Portable Charger",
+    "description": "10,000mAh portable charger with fast-charging capability.",
+    "price": 25.99,
+    "category": "Electronics",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Water Bottle",
+    "description": "Stainless steel water bottle, keeps drinks cold for 24 hours.",
+    "price": 19.99,
+    "category": "Lifestyle",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Yoga Mat",
+    "description": "Eco-friendly yoga mat with non-slip surface.",
+    "price": 29.99,
+    "category": "Fitness",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Bluetooth Speaker",
+    "description": "Compact Bluetooth speaker with excellent sound quality.",
+    "price": 34.99,
+    "category": "Electronics",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 7,
+    "name": "LED Desk Lamp",
+    "description": "Adjustable LED desk lamp with USB charging port.",
+    "price": 22.99,
+    "category": "Home",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with adjustable DPI settings.",
+    "price": 18.99,
+    "category": "Electronics",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Resistance Bands Set",
+    "description": "Set of five resistance bands with varying levels of resistance.",
+    "price": 16.99,
+    "category": "Fitness",
+    "image": "../../../../../public/test.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Laptop Sleeve",
+    "description": "Protective laptop sleeve, fits up to 15-inch laptops.",
+    "price": 20.99,
+    "category": "Accessories",
+    "image": "../../../../../public/test.jpg"
+  }
+]

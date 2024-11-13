@@ -1,0 +1,15 @@
+<section class="product">
+<p>product-list works!</p>
+
+    <div class="card-container">
+      <app-product-card
+      *ngFor="let product of products | async"
+      [name]="product.name"
+      [price]="product.price"
+      [image]="product.image"
+      [id]="product.id"
+      >
+    </app-product-card>
+    </div>
+
+</section>

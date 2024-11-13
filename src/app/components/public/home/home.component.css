@@ -1,0 +1,58 @@
+.hero {
+  height: 100vh; /* Full viewport height */
+  background-image: url('../../../../../public/test.jpg'); /* Your hero image path */
+  background-size: cover; /* Scale the image to cover the entire hero */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Avoid tiling */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  color: white; /* Make text white for contrast */
+  text-align: center;
+  position: relative; /* Allow overlay */
+  overflow: hidden; /* Hide overflow in case of animations */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Position above the overlay */
+  max-width: 800px;
+  padding: 20px;
+}
+
+/* Style for hero text and button */
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.hero button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero button:hover {
+  background-color: #0056b3;
+}
