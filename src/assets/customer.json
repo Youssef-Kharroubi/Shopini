@@ -95,6 +95,13 @@
       "password": "",
       "email": "",
       "role": "customer"
+    },
+    {
+      "id": "f3a0",
+      "username": "",
+      "password": "",
+      "email": "admin",
+      "role": "customer"
     }
   ]
 }

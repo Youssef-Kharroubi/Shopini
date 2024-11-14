@@ -4,12 +4,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
   providers: [AuthService],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
@@ -75,9 +75,8 @@ export class SignUpComponent {
       }
     }
     
-    get email() {
+    /*get email() {
       return this.profileForm.get('email');
-    }
-    
+    }*/
 
 }
