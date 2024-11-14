@@ -27,12 +27,9 @@
     class="form-control" 
     type="email" 
     placeholder="ex: myname@example.com"
-    [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}"
+   
   >
-  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
-    <div *ngIf="email.errors?.['required']">Email is required.</div>
-    <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
-  </div>
+
 </div>
 
         <!-- Phone -->
