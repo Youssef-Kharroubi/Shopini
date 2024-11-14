@@ -5,6 +5,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -16,9 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 export class SignUpComponent {
   private formBuilder = inject(FormBuilder);
   profileForm = this.formBuilder.group({
-    firstName: ['', Validators.required],
+    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
     lastName: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]], // Email validation added
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     role: ['', Validators.required],
     address: this.formBuilder.group({
@@ -58,7 +59,25 @@ export class SignUpComponent {
           console.error('Error during sign-up:', error); // Log error if it occurs
         }
       );
+      if (this.profileForm.valid) {
+        console.log("Form Submitted:", this.profileForm.value);
+      } else {
+        this.profileForm.markAllAsTouched(); 
+      }
     }
 
+    allowOnlyLetters(event: KeyboardEvent) {
+      const charCode = event.key.charCodeAt(0);
+    
+      // Allow uppercase and lowercase letters only (A-Z, a-z)
+      if (!((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122))) {
+        event.preventDefault();
+      }
+    }
+    
+    get email() {
+      return this.profileForm.get('email');
+    }
+    
 
 }

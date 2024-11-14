@@ -1,0 +1,54 @@
+.form-card {
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #666;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control, .form-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .address-section .form-control {
+    margin-top: 5px;
+  }
+  
+  .address-section label,
+  .current-status label {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  .btn-primary {
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  #password {
+    margin-top: 5px;
+  }
+  
