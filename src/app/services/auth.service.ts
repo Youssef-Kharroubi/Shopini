@@ -5,6 +5,25 @@ import {BehaviorSubject, catchError, map, Observable, throwError} from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
+export interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  birthDate: string;
+  address: {
+    street: string;
+    city: string;
+    district: string;
+    state: string;
+    zip: string;
+  };
+  status: string;
+  role: string;
+}
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -16,15 +35,40 @@ export class AuthService {
   public user$: Observable<any> = this.userSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
-  signUp(username: string, password: string, email: string,role: string): Observable<any> {
+  signUp(
+    firstName: string,
+    lastName: string,
+    email: string,
+    phone: string,
+    password: string,
+    birthDate: string,
+    street: string,
+    city: string,
+    district: string,
+    state: string,
+    zip: string,
+    status: string,
+    role: string
+  ): Observable<any> {
     const newCustomer = {
-      username,
-      password,
+      firstName,
+      lastName,
       email,
+      phone,
+      password,
+      birthDate,
+      address: {
+        street,
+        city,
+        district,
+        state,
+        zip
+      },
+      status,
       role
     };
 
-    console.log('Sending POST request with data:', newCustomer);  // Debugging line
+    console.log('Sending POST request with data:', newCustomer);
 
     return this.http.post<any>(this.apiUrl, newCustomer).pipe(
       tap(response => {
@@ -37,10 +81,10 @@ export class AuthService {
     );
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+  login(firstName: string, password: string): Observable<User> {
+    return this.http.get<User[]>(this.apiUrl).pipe(
       map((users) => {
-        const user = users.find((u) => u.username === username && u.password === password);
+        const user = users.find((f) => f.firstName === firstName && f.password === password);
 
         if (user) {
           this.loggedIn.next(true);
@@ -58,8 +102,8 @@ export class AuthService {
       }),
       catchError((error) => throwError(() => new Error(error.message || 'Login error')))
     );
-
   }
+
   private generateToken(): string {
     return Math.random().toString(36).substring(2);
   }
