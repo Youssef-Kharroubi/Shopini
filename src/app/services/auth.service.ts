@@ -68,7 +68,7 @@ export class AuthService {
       role
     };
 
-    console.log('Sending POST request with data:', newCustomer);  // Debugging line
+    console.log('Sending POST request with data:', newCustomer);
 
     return this.http.post<any>(this.apiUrl, newCustomer).pipe(
       tap(response => {

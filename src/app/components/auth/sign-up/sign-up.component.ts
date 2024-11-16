@@ -53,15 +53,11 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  // Ensure that the form is valid before submitting
+
   onSignUp() {
-    if (this.profileForm.valid) {
       const userData = this.profileForm.value;
       const role = userData.isAdmin ? 'admin' : 'customer';
       this.profileForm.patchValue({ role: role });
-
-      // Debugging: Log form data
-      console.log('Form Data:', userData);
 
       // Send the data to json-server
       this.authService
@@ -89,10 +85,8 @@ export class SignUpComponent implements OnInit {
             console.error('Error during sign-up:', error); // Log error if it occurs
           }
         );
-    } else {
-      this.profileForm.markAllAsTouched(); // Mark form as touched if invalid
     }
-  }
+
 
   allowOnlyLetters(event: KeyboardEvent) {
     const charCode = event.key.charCodeAt(0);
