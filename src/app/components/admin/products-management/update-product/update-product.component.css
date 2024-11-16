@@ -1,0 +1,103 @@
+/* Center the dialog in the viewport */
+.mat-dialog-container {
+  max-width: 500px; /* Limit the width */
+  width: 100%; /* Make sure it's responsive */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners for the dialog */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for the popup */
+  animation: fadeIn 0.3s ease-out; /* Add animation for smooth popup appearance */
+}
+
+/* Fade-in effect for the dialog */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Style the form inside the dialog */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input field styling */
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+/* Focus state for input fields */
+input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: none;
+}
+
+/* Button styles */
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Change button color on hover */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Cancel button with different color */
+button[type='button'] {
+  background-color: #f44336;
+}
+
+button[type='button']:hover {
+  background-color: #d32f2f;
+}
+
+/* Title styling inside dialog */
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Add padding around the form */
+.mat-dialog-content {
+  padding: 15px;
+}
+
+/* Style the dialog buttons to be aligned at the bottom */
+.mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Ensure the dialog actions (buttons) are responsive */
+@media (max-width: 600px) {
+  .mat-dialog-container {
+    padding: 15px;
+  }
+  button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}

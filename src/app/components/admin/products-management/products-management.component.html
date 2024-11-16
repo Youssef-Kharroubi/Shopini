@@ -1,1 +1,35 @@
-<p>products-management works!</p>
+<section>
+  <div>
+    <h1 class="d-flex justify-content-center page-title ">Product Management</h1>
+    <h2 class="d-flex justify-content-center page-subtitle ">Hello Admin !</h2>
+  </div>
+  <div class="admin-table-container ">
+    <button class="add-button  ms-auto">Add New Item</button>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th><div class="ms-2 w-25">Name</div></th>
+        <th><div class="ms-2">Price</div></th>
+        <th><div class="ms-4">Description</div></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products | async">
+        <td><div class="ms-2">{{ product.id }}</div></td>
+        <td><div class="ms-2 w-100" >{{ product.name }}</div></td>
+        <td><div class="ms-2">{{ product.price }}</div></td>
+        <td><div class="ms-4">{{ product.description }}</div></td>
+        <td>
+          <button class="update-button ms-5" (click)="onUpdate(product)">Update</button>
+        </td>
+        <td >
+          <button class="delete-button ms-5 mt-1" (click)="onDelete(product)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+

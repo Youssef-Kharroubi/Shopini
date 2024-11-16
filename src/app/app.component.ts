@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
 import { HeaderComponent } from './components/shared/header/header.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
   styleUrls: ['./app.component.css'],
   standalone: true,
   providers: [AuthService],
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgOptimizedImage, HttpClientModule, AsyncPipe, NgIf, HeaderComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgOptimizedImage, HttpClientModule, AsyncPipe, NgIf, HeaderComponent, MatDialogModule],
 })
 export class AppComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>; // Use ! to declare without immediate initialization

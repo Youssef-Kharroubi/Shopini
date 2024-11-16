@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../../../models/product';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import { ProductService } from '../../../services/product.service'
 import {ProductCardComponent} from '../product-card/product-card.component';
 
 @Component({
@@ -17,12 +18,14 @@ import {ProductCardComponent} from '../product-card/product-card.component';
     ProductCardComponent,
 
   ],
+  providers:[ProductService],
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
-  products: Observable<Product[]>;
+export class ProductListComponent implements OnInit{
+  products: Observable<Product[]> | undefined;
 
-  constructor(private http: HttpClient) {
-    this.products = this.http.get<Product[]>('assets/products.json');
+  constructor(private productService: ProductService) {}
+  ngOnInit() {
+    this.products = this.productService.getAllProducts();
   }
 }
