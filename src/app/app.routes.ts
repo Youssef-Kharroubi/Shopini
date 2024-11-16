@@ -5,10 +5,13 @@ import {LoginComponent} from './components/auth/login/login.component';
 import {AuthGuard} from './guards/AuthGuard';
 import {SignUpComponent} from './components/auth/sign-up/sign-up.component';
 import {HomeComponent} from './components/public/home/home.component';
+import { ContactusComponent } from './components/public/contactus/contactus.component';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'contact', component: ContactusComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   // {
