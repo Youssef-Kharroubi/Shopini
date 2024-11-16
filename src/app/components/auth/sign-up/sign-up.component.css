@@ -1,3 +1,4 @@
+
 .form-card {
     max-width: 800px;
     margin: 20px auto;
@@ -52,3 +53,17 @@
     margin-top: 5px;
   }
   
+
+input.ng-invalid {
+  background-color: pink; /* Red background for invalid inputs */
+}
+
+input.ng-valid {
+  background-color: lightgreen; /* Green background for valid inputs */
+}
+
+button:disabled {
+  opacity: 0.6; /* You can adjust the opacity */
+  cursor: not-allowed;
+}
+

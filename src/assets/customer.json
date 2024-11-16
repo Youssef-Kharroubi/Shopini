@@ -102,6 +102,27 @@
       "password": "",
       "email": "admin",
       "role": "customer"
+    },
+    {
+      "id": "7c8d",
+      "username": "",
+      "password": "",
+      "email": "admin",
+      "role": "customer"
+    },
+    {
+      "id": "dabb",
+      "username": "",
+      "password": "",
+      "email": "admin",
+      "role": "customer"
+    },
+    {
+      "id": "8549",
+      "username": "",
+      "password": "",
+      "email": "admin",
+      "role": "customer"
     }
   ]
 }
