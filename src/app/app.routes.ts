@@ -7,11 +7,13 @@ import {SignUpComponent} from './components/auth/sign-up/sign-up.component';
 import {HomeComponent} from './components/public/home/home.component';
 import { ContactusComponent } from './components/public/contactus/contactus.component';
 import { ProductsManagementComponent } from './components/admin/products-management/products-management.component';
+import { AboutusComponent } from './components/public/aboutus/aboutus.component';
 
 
 export const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutusComponent },
   { path: 'contact', component: ContactusComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'product/:id', component: ProductDetailComponent },
