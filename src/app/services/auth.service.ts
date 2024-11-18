@@ -1,4 +1,3 @@
-// auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, catchError, map, Observable, throwError} from 'rxjs';
@@ -6,7 +5,7 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 export interface User {
-  firstName: string;
+  username: string;
   lastName: string;
   email: string;
   phone: string;
@@ -84,14 +83,16 @@ export class AuthService {
   login(firstName: string, password: string): Observable<User> {
     return this.http.get<User[]>(this.apiUrl).pipe(
       map((users) => {
-        const user = users.find((f) => f.firstName === firstName && f.password === password);
-
+        const user = users.find((f) => f.username === firstName && f.password === password);
+        console.log('User found:', user);
         if (user) {
           this.loggedIn.next(true);
           const token = this.generateToken();
           localStorage.setItem('authToken', token);
+          localStorage.setItem('role', user.role);
+          console.log(user.role);
           if (user.role === 'admin') {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/productManagement']);
           } else {
             this.router.navigate(['/products']);
           }
@@ -113,12 +114,12 @@ export class AuthService {
     this.loggedIn.next(false);
 
   }
-  private checkAuthStatus(): boolean {
+  public checkAuthStatus(): boolean {
     return !!localStorage.getItem('authToken');
   }
 
   getToken(): string | null {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem('authToken');
   }
 
   getRole(): string | null {
