@@ -13,6 +13,7 @@ import {
 } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { AddProductComponent } from './add-product/add-product.component';
 import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {MatOption, MatSelect, MatSelectModule} from '@angular/material/select';
 import {MatInput, MatInputModule} from '@angular/material/input';
@@ -63,8 +64,11 @@ export class ProductsManagementComponent implements OnInit {
   nameFilter: string = '';
   categoryFilter: string = '';
   priceSort: string = 'asc';
+  product: Product;
 
-  constructor(private productService: ProductService, private dialog: MatDialog) {}
+  constructor(private productService: ProductService, private dialog: MatDialog) {
+    this.product = {} as Product;
+  }
 
   ngOnInit() {
     this.loadProducts();
@@ -122,5 +126,17 @@ export class ProductsManagementComponent implements OnInit {
         this.productService.updateProduct(updatedProduct).subscribe(() => this.loadProducts());
       }
     });
+  }
+  onAdd(product: Product){
+    const dialogRef = this.dialog.open(AddProductComponent, {
+      width: '400px',
+      data: product || {}
+    });
+    dialogRef.afterClosed().subscribe((newProduct) => {
+
+      if(newProduct){
+        this.productService.addProduct(newProduct).subscribe(() => this.loadProducts());
+      }
+    })
   }
 }
