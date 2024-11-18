@@ -109,3 +109,57 @@
   padding-left: 10px;
   border-left: 4px solid #4CAF50; /* Matches the "Add" button color for consistency */
 }
+
+/* Container for the entire filter section */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Individual filter field styling */
+.filter-field {
+  width: 100%;
+  height: 75px;
+  max-width: 200px;
+  flex: 1;
+}
+
+/* Style for the "Clear Filters" button */
+button {
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+/* Ensuring the input fields and select elements are consistent in appearance */
+mat-form-field {
+  width: 100%;
+}
+
+/* Button specific style */
+button.mat-raised-button {
+  padding: 8px 16px;
+  font-weight: bold;
+  min-width: 120px;
+}
+
+button.mat-raised-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Flexbox layout for filter section */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-field {
+    width: 100%;
+  }
+}
