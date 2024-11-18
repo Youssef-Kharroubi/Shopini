@@ -19,6 +19,10 @@ import { Product } from '../models/product';
       const url = `${this.jsonUrl}/${product.id}`;
       return this.http.put<Product>(url, product);
     }
+    addProduct(product: Product): Observable<Product>{
+      const url = `${this.jsonUrl}`;
+      return this.http.post<Product>(url, product);
+    }
     deleteProduct(product: Product): Observable<Product> {
       const url = `${this.jsonUrl}/${product.id}`;
       return this.http.delete<Product>(url);

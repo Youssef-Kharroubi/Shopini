@@ -111,6 +111,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('role');
     this.loggedIn.next(false);
 
   }
