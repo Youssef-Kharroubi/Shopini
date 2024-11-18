@@ -19,12 +19,9 @@ export class HeaderComponent {
   isLoggedIn$!: Observable<boolean>; // Use ! to declare without immediate initialization
   logedInUser: boolean = false;
   constructor(private authService: AuthService) {}
-  ngDoCheck(): void{
-    const token = localStorage.getItem('authToken');
-    if (token && !this.isLoggedIn$) {
-      this.logedInUser = true
-    }
+  getUserRole(){
 
+    return localStorage.getItem('role');
   }
   onLogout() {
     this.authService.logout();

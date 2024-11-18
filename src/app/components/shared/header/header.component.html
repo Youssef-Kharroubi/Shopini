@@ -1,4 +1,14 @@
-<header class="row">
+<header class="row" *ngIf="getUserRole() === 'admin'">
+  <div class="col d-flex justify-content-start">
+    <a class="m-2" routerLink="/admin-dashboard">Admin Dashboard</a>
+    <a class="m-2" routerLink="/manage-products">Manage Products</a>
+    <a class="m-2" routerLink="/manage-users">Manage Users</a>
+  </div>
+  <div class="d-flex justify-content-end col">
+    <button class="logout" (click)="onLogout()">Logout</button>
+  </div>
+</header>
+<header class="row" *ngIf="getUserRole() !== 'admin'">
   <div class="col d-flex justify-content-start">
     <a class="m-2" routerLink="/home">Home</a>
     <a class="m-2" routerLink="/products">Products</a>
