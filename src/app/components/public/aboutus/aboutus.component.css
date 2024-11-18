@@ -57,7 +57,7 @@
 
 .company-text {
   font-size: 1.1rem;
-  line-height: 1.; /* Improved line height for readability */
+  line-height: 1.5; /* Improved line height for readability */
   color: #333; /* Set a clean text color */
   margin-bottom: 1.5rem; /* Added space between paragraphs */
 }

@@ -24,7 +24,7 @@ div.ng-invalid.ng-touched {
 }
 .auth {
   height: 100vh; /* Full viewport height */
-  background-image: url('../../../../../public/test.jpg'); /* Your hero image path */
+ /* Your hero image path */
   background-size: cover; /* Scale the image to cover the entire hero */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Avoid tiling */

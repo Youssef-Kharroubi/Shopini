@@ -11,7 +11,6 @@
   text-align: center;
   position: relative; /* Allow overlay */
   overflow: hidden; /* Hide overflow in case of animations */
-  
 }
 
 .hero::before {
@@ -20,7 +19,7 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+
   background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
   z-index: 1;
 }
