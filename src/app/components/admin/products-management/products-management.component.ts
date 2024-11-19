@@ -55,7 +55,7 @@ import {HttpClientModule} from '@angular/common/http';
 export class ProductsManagementComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'price', 'description', 'actions'];
   dataSource = new MatTableDataSource<Product>();
-  categories: string[] = ['Electronics', 'Clothing', 'Food'];
+  categories: string[] = ['Electronics', 'Clothes', 'Books', 'Home', 'Sports'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -130,7 +130,7 @@ export class ProductsManagementComponent implements OnInit {
   onAdd(product: Product){
     const dialogRef = this.dialog.open(AddProductComponent, {
       width: '400px',
-      data: product || {}
+      data: { product: product || {}, categories: this.categories }
     });
     dialogRef.afterClosed().subscribe((newProduct) => {
 
