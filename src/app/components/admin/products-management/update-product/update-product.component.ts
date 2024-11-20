@@ -17,9 +17,9 @@ export class UpdateProductComponent implements OnInit{
 
   constructor(
     private dialogRef: MatDialogRef<UpdateProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product // Inject data
+    @Inject(MAT_DIALOG_DATA) public data: Product
   ) {
-    this.product = { ...data }; // Make a copy of the product data
+    this.product = { ...data };
   }
   ngOnInit(): void {}
 
