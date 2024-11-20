@@ -17,7 +17,7 @@ export const routes: Routes = [
   { path: 'about', component: AboutusComponent },
   { path: 'contact', component: ContactusComponent },
   { path: 'products', component: ProductListComponent },
-  { path: 'product/:id', component: ProductDetailComponent },
+  { path: 'product/:id/:source', component: ProductDetailComponent },
   { path: 'productManagement',  component: ProductsManagementComponent, canActivate: [AdminGuard]},
   { path: 'usersManagement',  component: UsersManagementComponent, canActivate: [AdminGuard]},
   // {

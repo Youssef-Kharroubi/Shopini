@@ -1,53 +1,70 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Product } from '../../../models/product';
-import { Location } from '@angular/common';
-
+import {Location, NgIf} from '@angular/common';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports:[HttpClientModule],
+  imports: [HttpClientModule, NgIf],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
   id!: string;
-  product: Product | undefined;
-
+  product: any;  // Allow product to be undefined initially
+  sourceParam: string | null = null;
   constructor(
     private route: ActivatedRoute,
     private location: Location,  // Inject the Location service
-    private http: HttpClient
+    private http: HttpClient,
+    private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
     // Get the product ID from the route
     const idParam = this.route.snapshot.paramMap.get('id');
+     this.sourceParam = this.route.snapshot.paramMap.get('source');
+
+    console.log(`Product ID: ${idParam}`);
     if (idParam) {
-      console.log(`Product ID: ${idParam}`);
-      this.fetchProductDetails(idParam);
+      this.fetchProductDetails(idParam,this.sourceParam);
     } else {
       console.error('Product ID is missing in the route parameters!');
     }
   }
 
-  fetchProductDetails(idParam:string): void {
+  fetchProductDetails(idParam: string, sourceParam: string | null): void {
     // Fetch the product list from the local JSON file (or API)
-    this.http.get<Product[]>('assets/products.json').subscribe(
-      (products) => {
-        this.product = products.find((p) => p.id == idParam);
 
-        if (!this.product) {
-          console.error('Product not found!');
+    if ('api' !== sourceParam) {
+
+      this.http.get<{ products: Product[] }>('assets/products.json').subscribe(
+        (response) => {
+          if (response && Array.isArray(response.products)) {
+            this.product = response.products.find((p) => p.id == idParam);
+            if (!this.product) {
+              console.error('Product not found!');
+            }
+          } else {
+            console.error('Unexpected response format:', response);
+          }
+        },
+        (error) => {
+          console.error('Error fetching products:', error);
         }
-      },
-      (error) => {
-        console.error('Error fetching products:', error);
-      }
-    );
+      );
+    } else {
+      console.log('Fetching product details from the API...');
+      this.apiService.getProduct(idParam).subscribe((data: any) => {
+        this.product = data;
+
+      });
+    }
   }
+
   goBack(): void {
     this.location.back();
   }

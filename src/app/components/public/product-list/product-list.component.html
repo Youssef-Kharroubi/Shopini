@@ -1,15 +1,50 @@
-<section class="product">
-<p style="color:black">product-list works!</p>
+<section class="product-list">
+  <h1 class="page-title">Normal Products</h1>
 
-    <div class="card-container">
-      <app-product-card
-      *ngFor="let product of products | async"
+  <!-- Card Container for Normal Products -->
+  <div class="card-container">
+    <app-product-card
+      *ngFor="let product of normalProductsPage"
       [name]="product.name"
       [price]="product.price"
       [image]="product.image"
       [id]="product.id"
-      >
+    >
     </app-product-card>
-    </div>
+  </div>
 
+  <!-- Paginator for Normal Products -->
+  <mat-paginator
+    #normalPaginator
+    [length]="normalProducts.length"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    showFirstLastButtons
+    (page)="onNormalProductsPageChange($event)"
+  ></mat-paginator>
+
+  <h1 class="page-title">International Products</h1>
+
+  <!-- Card Container for International Products -->
+  <div class="card-container">
+    <app-product-card
+      *ngFor="let product of internationalProductsPage"
+      [name]="product.name"
+      [price]="product.price"
+      [image]="product.image"
+      [id]="product.id"
+      [source]="product.source"
+    >
+    </app-product-card>
+  </div>
+
+  <!-- Paginator for International Products -->
+  <mat-paginator
+    #internationalPaginator
+    [length]="internationalProducts.length"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    showFirstLastButtons
+    (page)="onInternationalProductsPageChange($event)"
+  ></mat-paginator>
 </section>
