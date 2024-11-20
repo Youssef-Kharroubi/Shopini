@@ -9,7 +9,7 @@ import { ContactusComponent } from './components/public/contactus/contactus.comp
 import { ProductsManagementComponent } from './components/admin/products-management/products-management.component';
 import { AboutusComponent } from './components/public/aboutus/aboutus.component';
 import {AdminGuard} from './guards/adminGuard';
-
+import { UsersManagementComponent } from './components/admin/users-management/users-management.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
@@ -19,6 +19,7 @@ export const routes: Routes = [
   { path: 'products', component: ProductListComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'productManagement',  component: ProductsManagementComponent, canActivate: [AdminGuard]},
+  { path: 'usersManagement',  component: UsersManagementComponent, canActivate: [AdminGuard]},
   // {
   //   path: 'admin',
   //   canActivate: [AuthGuard],
