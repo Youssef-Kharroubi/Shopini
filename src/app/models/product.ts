@@ -8,4 +8,5 @@ export interface Product {
   comments: Comment[];
   category?: string;
   description?: string;
+  source: string;
 }
