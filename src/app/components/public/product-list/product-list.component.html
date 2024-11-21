@@ -1,13 +1,27 @@
 <section class="product-list">
-  <h1 class="page-title">Normal Products</h1>
+  <h2 class="page-title d-flex justify-content-center mt-5">Normal Products</h2>
 
   <!-- Card Container for Normal Products -->
-  <div class="card-container">
+  <div class="d-flex justify-content-end">
+  <div class="w-25">
+    <label for="categoryFilter">Filter by Category:</label>
+    <select
+      id="categoryFilter"
+      [(ngModel)]="selectedNormalCategory"
+      (change)="applyNormalCategoryFilter()"
+      class="filter-select "
+    >
+      <option value="">All Categories</option>
+      <option *ngFor="let category of uniqueNormalCategories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+  </div>
+  <div class="card-container ">
     <app-product-card
-      *ngFor="let product of normalProductsPage"
+      *ngFor="let product of filteredNormalProductsPage"
       [name]="product.name"
       [price]="product.price"
-      [image]="product.image"
+      [image]="product.image"s
       [id]="product.id"
     >
     </app-product-card>
@@ -23,8 +37,18 @@
     (page)="onNormalProductsPageChange($event)"
   ></mat-paginator>
 
-  <h1 class="page-title">International Products</h1>
-
+  <h2 class="page-title d-flex justify-content-center mt-2">International Products</h2>
+  <div class="d-flex justify-content-end">
+  <div class="search-filter-container   w-25">
+    <input
+      type="text"
+      placeholder="Search by product name"
+      [(ngModel)]="searchTerm"
+      (input)="applyFilters()"
+      class="search-input"
+    />
+  </div>
+  </div>
   <!-- Card Container for International Products -->
   <div class="card-container">
     <app-product-card

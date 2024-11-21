@@ -7,10 +7,6 @@ import { ApiService } from '../../../services/api.service';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { NgForOf, SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {NgIf} from "@angular/common";
-import {Router, RouterLink, RouterLinkActive} from "@angular/router";
-import {Observable} from 'rxjs';
-import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-product-list',
@@ -37,13 +33,11 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   filteredNormalProducts: Product[] = [];
   filteredNormalProductsPage: Product[] = [];
   filteredProducts: Product[] = [];
-  logedInUser: boolean = false;
-  
- 
+
   @ViewChild('normalPaginator') normalPaginator!: MatPaginator;
   @ViewChild('internationalPaginator') internationalPaginator!: MatPaginator;
 
-  constructor(private apiService: ApiService, private productService: ProductService,private authService: AuthService,private router: Router) {}
+  constructor(private apiService: ApiService, private productService: ProductService) {}
 
   ngOnInit(): void {
     this.fetchNormalProducts();
@@ -156,15 +150,5 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   onInternationalProductsPageChange(event: any): void {
     this.updateCurrentPageInternationalProducts();
-  }
-  getUserRole(){
-    this.logedInUser = localStorage.getItem('role') !== null;
-    return localStorage.getItem('role');
-  }
-
-  onLogout() {
-    this.authService.logout();
-    this.router.navigate(['/']);
-    this.logedInUser = false;
   }
 }
