@@ -1,16 +1,12 @@
-/* Style for input fields when they are invalid */
 input.ng-invalid.ng-touched {
-  border: 1px solid red; /* Red border for invalid inputs */
+  border: 1px solid red;
 }
 
-/* Style for the error message */
 small.error {
-  color: red; /* Red text color for error messages */
+  color: red;
   font-size: 0.875rem;
-  display: block; /* Ensure the error message appears below the input */
+  display: block;
 }
-
-/* Style for the form group when the input is invalid */
 div.ng-invalid.ng-touched {
   margin-bottom: 1rem;
 }
@@ -23,21 +19,27 @@ div.ng-invalid.ng-touched {
   border-radius: 12px;
 }
 .auth {
-  height: 100vh; /* Full viewport height */
- /* Your hero image path */
-  background-size: cover; /* Scale the image to cover the entire hero */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Avoid tiling */
-  align-items: center; /* Center content vertically */
-  color: white; /* Make text white for contrast */
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  color: white;
   text-align: center;
-  position: relative; /* Allow overlay */
-  overflow: hidden; /* Hide overflow in case of animations */
+  position: relative;
+  overflow: hidden;
 }
 .title{
   margin-top:150px;
 }
 .background{
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+}
+.is-invalid {
+  border: 2px solid red;
+}
+
+.is-valid {
+  border: 2px solid green;
 }

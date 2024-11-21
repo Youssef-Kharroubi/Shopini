@@ -1,23 +1,35 @@
 <section class="auth">
-  <div class="background ">
-  <h1 class=" title d-flex justify-content-center  ">
-    Login
-  </h1>
-<div class="loginZone d-flex justify-content-center">
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-  <div class="row">
-  <label class="mt-1" >UserName</label>
-  <input class="mt-2" formControlName="username">
-  </div>
-  <div class="row">
-  <label class="mt-1">Password</label>
-  <input class="mt-2" formControlName="password" type="password">
-  </div>
-  <div class="  row ms-5  col-8 mt-4">
-  <button class="loginButton">Login</button>
-  </div>
-</form>
-
-</div>
+  <div class="background">
+    <h1 class="title d-flex justify-content-center">Login</h1>
+    <div class="loginZone d-flex justify-content-center">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="row">
+          <label class="mt-1">UserName</label>
+          <input
+            class="mt-2"
+            formControlName="username"
+            [ngClass]="{
+              'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched,
+              'is-valid': loginForm.get('username')?.valid && loginForm.get('username')?.touched
+            }"
+          />
+        </div>
+        <div class="row">
+          <label class="mt-1">Password</label>
+          <input
+            class="mt-2"
+            formControlName="password"
+            type="password"
+            [ngClass]="{
+              'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched,
+              'is-valid': loginForm.get('password')?.valid && loginForm.get('password')?.touched
+            }"
+          />
+        </div>
+        <div class="row ms-5 col-8 mt-4">
+          <button class="loginButton">Login</button>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
