@@ -1,104 +1,49 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
   margin: 0;
-  font-family: Arial, sans-serif; /* Ensure proper font */
 }
 
 header {
-  position: fixed; /* Fix the navbar at the top */
+  position: fixed; /* Fix the navbar */
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Keep navbar above all content */
-  background-color: #333; /* Background color for navbar */
+  z-index: 1000; /* Keep above content */
+  background-color: #333;
   color: white;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height: 60px; /* Explicit height for navbar */
 }
 
 main {
   flex: 1;
+  margin-top: 60px; /* Match navbar height */
+  padding: 20px; /* Optional padding for page content */
   overflow-y: auto;
-  margin-top: 60px; /* Adjust to avoid navbar overlap */
 }
 
-.card-container {
-  display: flex;
-  flex-wrap: wrap; /* Arrange cards in rows */
-  justify-content: center; /* Center the cards horizontally */
-  gap: 16px;
-  padding: 16px;
-}
-
-.product-list {
-  background-image: url('/assets/images/test.jpg'); /* Make sure path is correct */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 40px 16px; /* Ensure padding for content */
+section.product-list {
+  margin-top: 20px; /* Additional spacing for clarity */
 }
 
 .page-title {
   text-align: center;
   font-size: 2rem;
-  color: #333;
   margin-bottom: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center cards */
+  gap: 16px; /* Spacing between cards */
+  padding: 16px;
 }
 
 mat-paginator {
   display: block;
-  margin: 20px auto;
-}
-
-.app-product-card {
-  width: 100%;
-  max-width: 300px;
-  margin: 10px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.app-product-card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.app-product-card .product-info {
-  padding: 10px;
-}
-
-@media (max-width: 768px) {
-  .card-container {
-    flex-direction: column; /* Stack cards on smaller screens */
-  }
-
-  .page-title {
-    font-size: 1.5rem;
-  }
-}
-
-.search-filter-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.search-input {
-  flex: 1;
-  padding: 0.5rem;
-  margin-right: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.filter-select {
-  flex: 0.5;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  margin: 20px auto; /* Center paginator */
 }

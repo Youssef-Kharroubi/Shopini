@@ -7,10 +7,7 @@
   font-family: 'Arial', sans-serif;
 }
 .page {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
+ 
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
