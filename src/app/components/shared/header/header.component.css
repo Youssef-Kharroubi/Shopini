@@ -1,28 +1,136 @@
-header{
-  background-color: burlywood;
-  padding: 10px;
+/* General Navbar Styles */
+/* Navbar styles */
+.navbar {
+  /* Fix the navbar at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays above all other elements */
+   /* Background color */
+  color: black; /* Text color */
+  padding: 10px 20px; /* Space inside the navbar */
+  
+}
 
-}
-a{
-  color: white;
-  text-decoration: none;
-}
-a:hover{
-  color:black;
-}
-html, body {
+/* Space below the navbar */
+body {
+  margin: 0; /* Remove default body margin */
   height: 100%;
-  margin: 0;
-  padding: 0;
+  padding-top: 60px; /* Adjust this to match the navbar height */
 }
-.logout{
-  border-radius: 12px;
-  background-color: burlywood;
-  padding: 5px;
-  color:white;
-  border: black;
+
+/* Link styles for navbar */
+.navbar-link {
+  color: black;
+  text-decoration: none;
+  margin: 0 10px;
 }
-.logout:hover{
-  color:black;
-  border:white;
-}   
+
+.navbar-link:hover {
+  text-decoration: underline;
+}
+
+.brand-logo {
+  height: 40px; /* Adjust the logo size */
+}
+
+/* Button styles */
+.logout, .login-signup-btn {
+  background-color: #f44336; /* Red color for logout */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout:hover, .login-signup-btn:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Logo Section */
+.navbar-left .brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-right: 30px; /* Space between logo and links */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center; /* Vertically centers the logo */
+  justify-content: flex-start; /* Ensures the logo is at the left */
+}
+
+.brand-logo {
+  height: 90px; /* Adjust the height to make it small */
+  width: auto;  /* Keeps the aspect ratio intact */
+}
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Navbar text color */
+.text-white {
+  color: white;
+}
+
+.text-black {
+  color: black;
+}
+
+
+.navbar-link {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: red; /* Highlight color on hover */
+}
+
+/* Navbar Right (Logout or Login/Signup) */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.logout {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+  background-color: darkred;
+}
+
+/* Login/Signup Button (styled like Subscribe) */
+/* Login/Signup Button (Styled as Rounded Box) */
+.login-signup-btn {
+  background-color: red;       /* Red background */
+  color: white;                /* White text */
+  padding: 10px 30px;          /* Padding for size */
+  border-radius: 25px;         /* Rounded corners */
+  cursor: pointer;            /* Pointer cursor on hover */
+  font-size: 16px;             /* Font size */
+  text-decoration: none;       /* Remove underline */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+/* Hover Effect for the Login/Signup Button */
+.login-signup-btn:hover {
+  background-color: darkred;   /* Darker shade when hovered */
+  transform: scale(1.05);       /* Slight zoom effect */
+}
+

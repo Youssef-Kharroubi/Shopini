@@ -1,35 +1,192 @@
-<section class="auth">
-  <div class="background">
-    <h1 class="title d-flex justify-content-center">Login</h1>
-    <div class="loginZone d-flex justify-content-center">
-      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-        <div class="row">
-          <label class="mt-1">UserName</label>
-          <input
-            class="mt-2"
-            formControlName="username"
-            [ngClass]="{
-              'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched,
-              'is-valid': loginForm.get('username')?.valid && loginForm.get('username')?.touched
-            }"
-          />
+<div class="container" id="container">
+<!-- Sign-up form -->
+<div class="form-container sign-up-container">
+  <form [formGroup]="profileForm" (ngSubmit)="onSignUp()">  <!-- Use profileForm here -->
+    <span style="font-weight: bold; font-size: 24px; text-decoration: underline; text-decoration-thickness: 5px;">Create your account</span>
+
+    <br>
+
+
+    <div class="row">
+      <!-- First Column -->
+      <div class="col">
+        <!-- Full Name -->
+        <div class="input-container">
+          <input 
+            id="fullName" 
+            formControlName="fullName" 
+            class="form-control" 
+            type="text" 
+            placeholder="Full Name" 
+            (keydown)="allowOnlyLetters($event)" 
+            required
+            [ngClass]="{'invalid': profileForm.get('fullName')?.touched && profileForm.get('fullName')?.hasError('required'), 'valid': profileForm.get('fullName')?.valid}">
+          <span *ngIf="profileForm.get('fullName')?.touched && profileForm.get('fullName')?.hasError('required')" class="text-danger">
+            <span class="exclamation">!</span> Please type in your name.
+          </span>
         </div>
-        <div class="row">
-          <label class="mt-1">Password</label>
-          <input
-            class="mt-2"
-            formControlName="password"
-            type="password"
-            [ngClass]="{
-              'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched,
-              'is-valid': loginForm.get('password')?.valid && loginForm.get('password')?.touched
-            }"
-          />
+
+        <!-- Phone Number -->
+        <div class="input-container">
+          <input 
+            id="phone" 
+            formControlName="phone" 
+            class="form-control" 
+            type="tel" 
+            placeholder="Phone number" 
+            (keydown)="allowOnlyNumbers($event)" 
+            [ngClass]="{'invalid': profileForm.get('phone')?.touched && (profileForm.get('phone')?.hasError('required') || profileForm.get('phone')?.hasError('pattern')), 'valid': profileForm.get('phone')?.valid}">
+          <span *ngIf="profileForm.get('phone')?.touched && profileForm.get('phone')?.hasError('required')" class="text-danger">
+            <span class="exclamation">!</span> Phone Number is required
+          </span>
+          <span *ngIf="profileForm.get('phone')?.touched && profileForm.get('phone')?.hasError('pattern')" class="text-danger">
+            <span class="exclamation">!</span> Phone Number must contain exactly 8 digits
+          </span>
         </div>
-        <div class="row ms-5 col-8 mt-4">
-          <button class="loginButton">Login</button>
+
+        <!-- Birth Date -->
+        <div class="input-container">
+          <input 
+            id="birthDate" 
+            formControlName="birthDate" 
+            class="form-control" 
+            type="date" 
+            [max]="today" 
+            placeholder="Enter your birth date"
+            [ngClass]="{'invalid': profileForm.get('birthDate')?.hasError('required'), 'valid': profileForm.get('birthDate')?.valid}">
+          <span *ngIf="profileForm.get('birthDate')?.hasError('required')" class="text-danger">
+            <span class="exclamation">!</span> Birth date is required
+          </span>
         </div>
-      </form>
+      </div>
+
+      <!-- Second Column -->
+      <div class="col">
+        <!-- Email -->
+        <div class="input-container">
+          <input 
+            id="email" 
+            formControlName="email" 
+            class="form-control" 
+            type="email" 
+            placeholder="Email" 
+            [ngClass]="{'invalid': profileForm.get('email')?.touched && (profileForm.get('email')?.hasError('required') || profileForm.get('email')?.hasError('email')), 'valid': profileForm.get('email')?.valid}">
+          <span *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.hasError('required')" class="text-danger">
+            <span class="exclamation">!</span> Email is required
+          </span>
+          <span *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.hasError('email')" class="text-danger">
+            <span class="exclamation">!</span> Please enter a valid email
+          </span>
+        </div>
+
+        <!-- Password -->
+        <div class="input-container">
+          <input 
+            id="password" 
+            formControlName="password" 
+            class="form-control" 
+            type="password" 
+            placeholder="Password" 
+            [ngClass]="{'invalid': profileForm.get('password')?.touched && (profileForm.get('password')?.hasError('required') || profileForm.get('password')?.hasError('minlength')), 'valid': profileForm.get('password')?.valid}">
+          <span *ngIf="profileForm.get('password')?.touched && profileForm.get('password')?.hasError('required')" class="text-danger">
+            <span class="exclamation">!</span> Password is required
+          </span>
+          <span *ngIf="profileForm.get('password')?.touched && profileForm.get('password')?.hasError('minlength')" class="text-danger">
+            <span class="exclamation">!</span> Password must be at least 6 characters
+          </span>
+        </div>
+
+        <!-- Status (Role) -->
+        <div class="input-container">
+          <select 
+            id="status" 
+            formControlName="status" 
+            class="form-select" 
+            placeholder="Select a role" 
+            [ngClass]="{'invalid': profileForm.get('status')?.touched && profileForm.get('status')?.hasError('required'), 'valid': profileForm.get('status')?.valid}">
+            <option value="" disabled selected>Select a role</option>
+            <option value="admin">Admin</option>
+            <option value="customer">Customer</option>
+          </select>
+          <span *ngIf="profileForm.get('status')?.touched && profileForm.get('status')?.hasError('required')" class="text-danger">
+            <span class="exclamation">!</span> Please select a role.
+          </span>
+        </div>
+      </div>
+    </div>
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+
+
+<!-- Sign-in form -->
+<div class="form-container sign-in-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <span style="font-weight: bold; font-size: 50px; text-decoration: underline; text-decoration-thickness: 5px;">Login</span>
+    <span>Enter your login credentials here</span>
+    <br>
+
+    <!-- Username Field -->
+    <div class="input-container">
+      <input
+        formControlName="username"
+        type="text"
+        placeholder="Username"
+        [class.invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+        [class.valid]="loginForm.get('username')?.valid && loginForm.get('username')?.touched"
+      />
+      <div
+        *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.hasError('required')"
+        class="error-message"
+      >
+        <span class="exclamation">!</span> Please enter your username.
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="input-container">
+      <input
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+        [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+        [class.valid]="loginForm.get('password')?.valid && loginForm.get('password')?.touched"
+      />
+      <div
+        *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')"
+        class="error-message"
+      >
+        <span class="exclamation">!</span> Please enter your password.
+      </div>
+    </div>
+
+    <a href="#" class="underline-link">Forgot your password?</a>
+
+    <!-- Error message for incomplete fields -->
+    <div *ngIf="loginForm.invalid && (loginForm.get('username')?.touched || loginForm.get('password')?.touched)" class="error-message">
+      <span class="exclamation">!</span> Please fill in both fields before submitting.
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
+  </form>
+</div>
+
+
+
+  <!-- Overlay for switching between sign-in and sign-up -->
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" id="signIn" (click)="toggleSignIn()">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello!</h1>
+        <p>Enter your personal details and start your journey with us</p>
+        <button class="ghost" (click)="toggleSignUp()">Sign Up</button>
+      </div>
     </div>
   </div>
-</section>
+</div>
