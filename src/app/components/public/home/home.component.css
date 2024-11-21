@@ -1,5 +1,5 @@
 .hero {
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   background-image: url('../../../../../public/test.jpg'); /* Your hero image path */
   background-size: cover; /* Scale the image to cover the entire hero */
   background-position: center; /* Center the image */
@@ -11,17 +11,6 @@
   text-align: center;
   position: relative; /* Allow overlay */
   overflow: hidden; /* Hide overflow in case of animations */
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
-  z-index: 1;
 }
 
 .hero-content {
