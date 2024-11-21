@@ -11,13 +11,6 @@ export interface User {
   phone: string;
   password: string;
   birthDate: string;
-  address: {
-    street: string;
-    city: string;
-    district: string;
-    state: string;
-    zip: string;
-  };
   status: string;
   role: string;
 }
@@ -35,34 +28,20 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(
-    firstName: string,
-    lastName: string,
+    fullName: string,
     email: string,
     phone: string,
     password: string,
     birthDate: string,
-    street: string,
-    city: string,
-    district: string,
-    state: string,
-    zip: string,
     status: string,
     role: string
   ): Observable<any> {
     const newCustomer = {
-      firstName,
-      lastName,
+      fullName,
       email,
       phone,
       password,
       birthDate,
-      address: {
-        street,
-        city,
-        district,
-        state,
-        zip
-      },
       status,
       role
     };

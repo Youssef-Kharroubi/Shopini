@@ -40,13 +40,7 @@ export class SignUpComponent implements OnInit {
         ],
       ],
       birthDate: ['', Validators.required],
-      address: this.formBuilder.group({
-        street: ['', Validators.required],
-        city: ['', Validators.required],
-        district: [''],
-        state: [''],
-        zip: ['', [Validators.required]], // Correct syntax
-      }),
+    
       role: ['', Validators.required],
       status: ['', Validators.required],
       isAdmin: [false],
@@ -54,7 +48,7 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  onSignUp() {
+  /*onSignUp() {
       const userData = this.profileForm.value;
       const role = userData.isAdmin ? 'admin' : 'customer';
       this.profileForm.patchValue({ role: role });
@@ -68,11 +62,6 @@ export class SignUpComponent implements OnInit {
           userData.phone,
           userData.password,
           userData.birthDate,
-          userData.address.street,
-          userData.address.city,
-          userData.address.district,
-          userData.address.state,
-          userData.address.zip,
           userData.status,
           role
         )
@@ -85,7 +74,7 @@ export class SignUpComponent implements OnInit {
             console.error('Error during sign-up:', error); // Log error if it occurs
           }
         );
-    }
+    }*/
 
 
   allowOnlyLetters(event: KeyboardEvent) {

@@ -18,8 +18,8 @@
 
   <!-- Show login and sign-up links if not logged in -->
   <div class="d-flex justify-content-end col" *ngIf="!(logedInUser); else loggedIn">
-    <a class="m-2" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
-    <a class="m-2" routerLink="/signup">SignUp</a>
+    <a class="m-2" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login/Signup</a>
+    <!--<a class="m-2" routerLink="/signup">SignUp</a>-->
   </div>
 
   <!-- Show logout button if logged in -->
