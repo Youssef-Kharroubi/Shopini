@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NgIf} from "@angular/common";
-import {RouterLink, RouterLinkActive} from "@angular/router";
+import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {Observable} from 'rxjs';
 import {AuthService} from '../../../services/auth.service';
 
@@ -16,15 +16,14 @@ import {AuthService} from '../../../services/auth.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  isLoggedIn$!: Observable<boolean>; // Use ! to declare without immediate initialization
   logedInUser: boolean = false;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router: Router) {}
   getUserRole(){
-
     return localStorage.getItem('role');
   }
   onLogout() {
     this.authService.logout();
+    this.router.navigate(['/']);
     this.logedInUser = false;
   }
 }
