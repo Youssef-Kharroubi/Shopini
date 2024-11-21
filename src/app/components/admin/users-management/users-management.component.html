@@ -1,12 +1,12 @@
-<section>
+<section class="mt-3">
   <div>
-    <h1 class="d-flex justify-content-center ">User Management</h1>
-    <h2 class="d-flex justify-content-center ">Hello Admin!</h2>
+    <h1 class="d-flex justify-content-center page-title">User Management</h1>
+    <h2 class="d-flex justify-content-center page-subtitle ">Hello Admin!</h2>
   </div>
   <div class="admin-table-container">
     <div class="filter-container">
       <mat-form-field class="filter-field">
-        <div>Search by Name</div>
+        <mat-label>Search by Name</mat-label>
         <input  #nameInput matInput (input)="applyNameFilter($event)" placeholder="Enter name" />
       </mat-form-field>
 

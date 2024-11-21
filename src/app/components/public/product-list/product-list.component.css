@@ -17,3 +17,24 @@ main {
   gap: 16px; /* Add spacing between cards */
   padding: 16px; /* Add padding to prevent overlap with the footer */
 }
+
+.search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-select {
+  flex: 0.5;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

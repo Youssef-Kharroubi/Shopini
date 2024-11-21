@@ -6,6 +6,7 @@ import { internationalProduct } from '../../../models/internationalProducts';
 import { ApiService } from '../../../services/api.service';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { NgForOf, SlicePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -16,14 +17,22 @@ import { NgForOf, SlicePipe } from '@angular/common';
     ProductCardComponent,
     NgForOf,
     SlicePipe,
+    FormsModule,
   ],
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
   normalProducts: Product[] = [];
   internationalProducts: Product[] = [];
   normalProductsPage: Product[] = [];
   internationalProductsPage: Product[] = [];
+  searchTerm: string = '';
+  selectedCategory: string = '';
+  selectedNormalCategory: string = '';
+  uniqueNormalCategories: string[] = [];
+  filteredNormalProducts: Product[] = [];
+  filteredNormalProductsPage: Product[] = [];
+  filteredProducts: Product[] = [];
 
   @ViewChild('normalPaginator') normalPaginator!: MatPaginator;
   @ViewChild('internationalPaginator') internationalPaginator!: MatPaginator;
@@ -48,37 +57,69 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     }
   }
 
+
   fetchNormalProducts(): void {
     this.productService.getAllProducts().subscribe((data: any) => {
       this.normalProducts = this.shuffleArray(data);
+      this.uniqueNormalCategories = [...new Set(
+        this.normalProducts
+          .map(product => product.category)
+          .filter(category => category !== undefined)
+      )];
+      this.filteredNormalProducts = [...this.normalProducts];
       this.updateCurrentPageNormalProducts();
+    }, (error) => {
+      console.error('Error fetching normal products:', error);
     });
   }
 
+
+  // Filter Normal Products by Category
+  applyNormalCategoryFilter(): void {
+    this.filteredNormalProducts = this.selectedNormalCategory
+      ? this.normalProducts.filter(product => product.category === this.selectedNormalCategory)
+      : [...this.normalProducts];
+    this.updateCurrentPageNormalProducts();
+  }
+
+  // Fetch International Products
   fetchInternationalProducts(): void {
     this.apiService.getProducts().subscribe((data: internationalProduct[]) => {
       const normalizedProducts = data.map((prod) => this.normalizeInternationalProduct(prod));
       this.internationalProducts = normalizedProducts.map(product => ({
         ...product,
-        source: 'api',  // Mark these as 'api' products
+        source: 'api',
       }));
+
+      this.filteredProducts = [...this.internationalProducts];
       this.updateCurrentPageInternationalProducts();
     });
   }
 
+  // Apply Filters for International Products (Search + Category)
+  applyFilters(): void {
+    this.filteredProducts = this.internationalProducts.filter(product => {
+      const matchesSearch = product.name.toLowerCase().includes(this.searchTerm.toLowerCase());
+      return matchesSearch ;
+    });
+    this.updateCurrentPageInternationalProducts(); // Update paginator after filtering
+  }
+
+  // Update Pagination for Normal Products
   updateCurrentPageNormalProducts(): void {
-    if (this.normalPaginator && this.normalProducts) {
+    if (this.normalPaginator && this.filteredNormalProducts) {
       const startIndex = this.normalPaginator.pageIndex * this.normalPaginator.pageSize;
       const endIndex = startIndex + this.normalPaginator.pageSize;
-      this.normalProductsPage = this.normalProducts.slice(startIndex, endIndex); // Slice the array based on paginator
+      this.filteredNormalProductsPage = this.filteredNormalProducts.slice(startIndex, endIndex);
     }
   }
 
+  // Update Pagination for International Products
   updateCurrentPageInternationalProducts(): void {
-    if (this.internationalPaginator && this.internationalProducts) {
+    if (this.internationalPaginator && this.filteredProducts) {
       const startIndex = this.internationalPaginator.pageIndex * this.internationalPaginator.pageSize;
       const endIndex = startIndex + this.internationalPaginator.pageSize;
-      this.internationalProductsPage = this.internationalProducts.slice(startIndex, endIndex); // Slice the array based on paginator
+      this.internationalProductsPage = this.filteredProducts.slice(startIndex, endIndex);
     }
   }
 
@@ -86,22 +127,23 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   normalizeInternationalProduct(prod: internationalProduct): Product {
     return {
       id: prod.id,
-      name: prod.title, // Map `title` to `name`
+      name: prod.title,
       price: prod.price,
       description: prod.description,
-      isAvailable: true, // Default value or map if available
-      releaseDate: new Date(), // Default value or map if available
-      image: prod.images[0], // Map nested `category.image`
-      comments: [], // Default empty array
-      source: 'api', // Mark these as 'api' products
+      isAvailable: true,
+      releaseDate: new Date(),
+      image: prod.category.image,
+      comments: [],
+      source: 'api',
+      category: prod.category.name,
     };
   }
 
+  // Shuffle array for random ordering
   shuffleArray(array: Product[]): Product[] {
     return array.sort(() => Math.random() - 0.5);
   }
 
-  // Handlers for paginator page changes
   onNormalProductsPageChange(event: any): void {
     this.updateCurrentPageNormalProducts();
   }

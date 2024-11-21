@@ -79,16 +79,13 @@ export class SignUpComponent implements OnInit {
 
   allowOnlyLetters(event: KeyboardEvent) {
     const charCode = event.key.charCodeAt(0);
-    // Allow uppercase and lowercase letters (A-Z, a-z)
     if (!((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122))) {
       event.preventDefault();
     }
   }
 
-  // Allow only numeric values, Backspace, and Enter keys
   allowOnlyNumbers(event: KeyboardEvent): void {
     const key = event.key;
-    // Allow numeric values, Backspace, and Enter keys
     if (!/[\d]/.test(key) && key !== 'Backspace' && key !== 'Enter') {
       event.preventDefault();
     }

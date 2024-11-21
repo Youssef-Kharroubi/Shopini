@@ -10,6 +10,7 @@ import { ProductsManagementComponent } from './components/admin/products-managem
 import { AboutusComponent } from './components/public/aboutus/aboutus.component';
 import {AdminGuard} from './guards/adminGuard';
 import { UsersManagementComponent } from './components/admin/users-management/users-management.component';
+import {HomeAdminComponent} from './components/admin/home-admin/home-admin.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
@@ -20,16 +21,7 @@ export const routes: Routes = [
   { path: 'product/:id/:source', component: ProductDetailComponent },
   { path: 'productManagement',  component: ProductsManagementComponent, canActivate: [AdminGuard]},
   { path: 'usersManagement',  component: UsersManagementComponent, canActivate: [AdminGuard]},
-  // {
-  //   path: 'admin',
-  //   canActivate: [AuthGuard],
-  //   data: { requiresAdmin: true },
-  //   // children: [
-  //   //   { path: '', component: AdminDashboardComponent },
-  //   //   { path: 'products/new', component: ProductFormComponent },
-  //   //   { path: 'products/edit/:id', component: ProductFormComponent }
-  //   // ]
-  // },
+  { path: 'HomeAdmin', component: HomeAdminComponent, canActivate: [AdminGuard]},
   { path: 'signup', component: SignUpComponent},
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: 'products' }

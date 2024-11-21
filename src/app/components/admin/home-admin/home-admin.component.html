@@ -1,1 +1,17 @@
-<p>home-admin works!</p>
+<div class="d-flex justify-content-center">
+<div class="statistics-container ">
+  <h2>Product Statistics</h2>
+  <ul>
+    <li *ngFor="let category of productStatistics | keyvalue">
+      {{ category.key }}: {{ category.value }}
+    </li>
+  </ul>
+
+  <h2>User Statistics</h2>
+  <ul>
+    <li>Total Users: {{ userStatistics.total }}</li>
+    <li>Admins: {{ userStatistics.admin }}</li>
+    <li>Customers: {{ userStatistics.customer }}</li>
+  </ul>
+</div>
+</div>

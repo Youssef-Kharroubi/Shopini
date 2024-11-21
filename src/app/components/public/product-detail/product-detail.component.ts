@@ -37,7 +37,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   fetchProductDetails(idParam: string, sourceParam: string | null): void {
-    // Fetch the product list from the local JSON file (or API)
 
     if ('api' !== sourceParam) {
 
@@ -57,9 +56,9 @@ export class ProductDetailComponent implements OnInit {
         }
       );
     } else {
-      console.log('Fetching product details from the API...');
       this.apiService.getProduct(idParam).subscribe((data: any) => {
         this.product = data;
+        console.log(this.product);
 
       });
     }
