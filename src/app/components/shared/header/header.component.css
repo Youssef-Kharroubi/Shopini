@@ -1,28 +1,87 @@
-header{
-  background-color: burlywood;
-  padding: 10px;
-
+/* General Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  color: white;
+  position: absolute; /* Keep navbar on top of the background */
+  top: 0;
+  width: 100%;
+  z-index: 10; /* Ensure navbar is on top */
 }
-a{
+/* Logo Section */
+.navbar-left .brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-right: 30px; /* Space between logo and links */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center; /* Vertically centers the logo */
+  justify-content: flex-start; /* Ensures the logo is at the left */
+}
+
+.brand-logo {
+  height: 90px; /* Adjust the height to make it small */
+  width: auto;  /* Keeps the aspect ratio intact */
+}
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-link {
   color: white;
   text-decoration: none;
+  font-size: 16px;
+  padding: 8px;
+  transition: color 0.3s ease;
 }
-a:hover{
-  color:black;
+
+.navbar-link:hover {
+  color: red; /* Highlight color on hover */
 }
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+
+/* Navbar Right (Logout or Login/Signup) */
+.navbar-right {
+  display: flex;
+  align-items: center;
 }
-.logout{
-  border-radius: 12px;
-  background-color: burlywood;
-  padding: 5px;
-  color:white;
-  border: black;
+
+.logout {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.logout:hover{
-  color:black;
-  border:white;
-}   
+
+.logout:hover {
+  background-color: darkred;
+}
+
+/* Login/Signup Button (styled like Subscribe) */
+/* Login/Signup Button (Styled as Rounded Box) */
+.login-signup-btn {
+  background-color: red;       /* Red background */
+  color: white;                /* White text */
+  padding: 10px 30px;          /* Padding for size */
+  border-radius: 25px;         /* Rounded corners */
+  cursor: pointer;            /* Pointer cursor on hover */
+  font-size: 16px;             /* Font size */
+  text-decoration: none;       /* Remove underline */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+/* Hover Effect for the Login/Signup Button */
+.login-signup-btn:hover {
+  background-color: darkred;   /* Darker shade when hovered */
+  transform: scale(1.05);       /* Slight zoom effect */
+}
+

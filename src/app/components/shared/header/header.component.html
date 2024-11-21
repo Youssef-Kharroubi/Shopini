@@ -1,31 +1,44 @@
-<header class="row" *ngIf="getUserRole() === 'admin'">
-  <div class="col d-flex justify-content-start">
-    <a class="m-2" routerLink="/HomeAdmin">Admin Dashboard</a>
-    <a class="m-2" routerLink="/productManagement">Manage Products</a>
-    <a class="m-2" routerLink="/usersManagement">Manage Users</a>
+<header class="navbar" *ngIf="getUserRole() === 'admin'">
+  <!-- Logo Section for Admin -->
+  <div class="navbar-left">
+    <img src="/public/ecommercelogoo.png" alt="E-commerce Logo" class="brand-logo">
   </div>
-  <div class="d-flex justify-content-end col">
+  
+
+  <!-- Admin Navigation Links -->
+  <div class="navbar-links">
+    <a class="navbar-link" routerLink="/admin-dashboard">Admin Dashboard</a>
+    <a class="navbar-link" routerLink="/productManagement">Manage Products</a>
+    <a class="navbar-link" routerLink="/usersManagement">Manage Users</a>
+  </div>
+
+  <!-- Logout Button -->
+  <div class="navbar-right">
     <button class="logout" (click)="onLogout()">Logout</button>
   </div>
 </header>
-<header class="row" *ngIf="getUserRole() !== 'admin'">
-  <div class="col d-flex justify-content-start">
-    <a class="m-2" routerLink="/home">Home</a>
-    <a class="m-2" routerLink="/products">Products</a>
-    <a class="m-2" routerLink="/about">About</a>
-    <a class="m-2" routerLink="/contact">Contact</a>
+
+<header class="navbar" *ngIf="getUserRole() !== 'admin'">
+  <!-- Logo Section for Non-Admin -->
+  <div class="navbar-left">
+    <img src="/public/ecommercelogoo.png" alt="E-commerce Logo" class="brand-logo">
   </div>
 
-  <!-- Show login and sign-up links if not logged in -->
-  <div class="d-flex justify-content-end col" *ngIf="!(logedInUser); else loggedIn">
-    <a class="m-2" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login/Signup</a>
-    <!--<a class="m-2" routerLink="/signup">SignUp</a>-->
+  <!-- Non-Admin Navigation Links -->
+  <div class="navbar-links">
+    <a class="navbar-link" routerLink="/home">Home</a>
+    <a class="navbar-link" routerLink="/products">Products</a>
+    <a class="navbar-link" routerLink="/about">About</a>
+    <a class="navbar-link" routerLink="/contact">Contact</a>
   </div>
 
-  <!-- Show logout button if logged in -->
-  <ng-template #loggedIn>
-    <div class="d-flex justify-content-end col">
+  <!-- Login/Signup or Logout Button -->
+  <div class="navbar-right">
+    <ng-container *ngIf="!(logedInUser); else loggedIn">
+      <button class="login-signup-btn" routerLink="/login">Login/Signup</button>
+    </ng-container>
+    <ng-template #loggedIn>
       <button class="logout" (click)="onLogout()">Logout</button>
-    </div>
-  </ng-template>
+    </ng-template>
+  </div>
 </header>
