@@ -4,11 +4,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Product } from '../../../models/product';
 import {Location, NgIf} from '@angular/common';
 import { ApiService } from '../../../services/api.service';
+import {highlightPipe} from '../../../pipes/highlight.pipe';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [HttpClientModule, NgIf],
+  imports: [HttpClientModule, NgIf,highlightPipe],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
 })
