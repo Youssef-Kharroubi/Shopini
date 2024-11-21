@@ -19,6 +19,7 @@ export class HeaderComponent {
   logedInUser: boolean = false;
   constructor(private authService: AuthService,private router: Router) {}
   getUserRole(){
+    this.logedInUser = localStorage.getItem('role') !== null;
     return localStorage.getItem('role');
   }
   onLogout() {
