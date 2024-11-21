@@ -6,8 +6,14 @@
 
   <label >Price:</label>
   <input type="number" [(ngModel)]="product.price" name="price" required />
-
-
+    <div class="d-flex">
+    <label >category:</label>
+    <mat-select  [(ngModel)]="product.category" name="category" required>
+        <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+        </mat-option>
+    </mat-select>
+    </div>
 
   <button type="submit">Save</button>
   <button type="button" (click)="onCancel()">Cancel</button>
