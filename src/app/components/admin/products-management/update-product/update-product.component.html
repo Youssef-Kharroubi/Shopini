@@ -6,6 +6,14 @@
 
   <label >Price:</label>
   <input type="number" [(ngModel)]="product.price" name="price" required />
+
+  <label>Photo URL:</label>
+  <input type="text"  [(ngModel)]="product.image" name="image" required />
+
+
+  <label>Description:</label>
+  <input type="text" [(ngModel)]="product.description" name="description" required />
+
     <div class="d-flex">
     <label >category:</label>
     <mat-select  [(ngModel)]="product.category" name="category" required>

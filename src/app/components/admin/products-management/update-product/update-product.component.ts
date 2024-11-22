@@ -1,9 +1,9 @@
 import { Component,Inject,OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Product } from '../../../../models/product';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatOption, MatSelect} from '@angular/material/select';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-update-product',
@@ -12,7 +12,9 @@ import {NgForOf} from '@angular/common';
     FormsModule,
     MatSelect,
     MatOption,
-    NgForOf
+    NgForOf,
+    NgIf,
+    ReactiveFormsModule
   ],
   templateUrl: './update-product.component.html',
   styleUrl: './update-product.component.css'
