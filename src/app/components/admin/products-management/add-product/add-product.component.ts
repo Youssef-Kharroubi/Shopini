@@ -31,16 +31,10 @@ export class AddProductComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { product: Product, categories: string[] },
   ) {
     this.productForm = this.fb.group({
-      name: [data.product.name || ''],
-      price: [data.product.price || 0],
-      isAvailable: [data.product.isAvailable|| true],
-      category: [data.product.category || ''],
-      description: [data.product.description || ''],
-    });
-    this.productForm = this.fb.group({
       name: [data.product.name || '', [Validators.required, Validators.minLength(3)]],
       price: [data.product.price || 0, [Validators.required, Validators.min(0)]],
       isAvailable: [data.product.isAvailable || true],
+      image: [data.product.image || ''],
       category: [data.product.category || '', Validators.required],
       description: [data.product.description || '', [Validators.required, Validators.minLength(10)]],
     });
