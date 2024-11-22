@@ -6,15 +6,39 @@
     <p class="product-description">{{ product?.description }}</p>
     <button class="back-button" (click)="goBack()">Back to Products</button>
   </div>
-  <div *ngIf="sourceParam !== 'api'" class="product-detail-card">
-    <img [src]="product?.image" alt="{{ product?.name }}" class="product-image">
-    <h2 class="product-title" [innerHTML]="product?.name | highlight: 'specificWord'"></h2>
-    <p class="product-description">{{ product?.description }}</p>
-    <p class="product-price">Price: ${{ product?.price }}</p>
-    <p class="product-category">Category: {{ product?.category }}</p>
-    <p class="product-description">Release Date: {{ product?.releaseDate | displayDate }}</p>
-    <p class="product-price">Price: ${{ product?.price }}</p>
-    <p class="product-description">Availability: {{ product?.isAvailable | availability }}</p>
-    <button class="back-button" (click)="goBack()">Back to Products</button>
+
+  <div *ngIf="sourceParam !== 'api'" class="product-detail-card container" style="min-width: 1000px;">
+    <div class="row">
+      <!-- First Column: Image -->
+      <div class="col-md-6 text-center mt-3 mb-3">
+        <img
+          [src]="product?.image"
+          alt="{{ product?.name }}"
+          class="product-image img-fluid rounded"
+        />
+      </div>
+
+      <div class="col-md-6 mt-3 mb-3">
+        <h2 class="product-title fw-bold" [innerHTML]="product?.name | highlight: 'specificWord'"></h2>
+        <p class="product-description mb-3">{{ product?.description }}</p>
+
+        <div class="row">
+          <div class="col-6">
+            <p class="product-price mb-1"><strong>Price:</strong> ${{ product?.price }}</p>
+            <p class="product-category mb-1"><strong>Category:</strong> {{ product?.category }}</p>
+          </div>
+          <div class="col-6">
+            <p class="product-description mb-1">
+              <strong>Release Date:</strong> {{ product?.releaseDate | displayDate }}
+            </p>
+            <p class="product-availability mb-1">
+              <strong>Availability:</strong> {{ product?.isAvailable | availability }}
+            </p>
+          </div>
+        </div>
+        <button class="btn btn-primary mt-3" (click)="goBack()">Back to Products</button>
+      </div>
+    </div>
   </div>
+
 </div>
