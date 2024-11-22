@@ -1,15 +1,13 @@
 /* General Navbar Styles */
 /* Navbar styles */
 .navbar {
-  /* Fix the navbar at the top */
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Ensure it stays above all other elements */
-   /* Background color */
-  color: black; /* Text color */
-  padding: 10px 20px; /* Space inside the navbar */
-  
+  z-index: 900;
+  background-color: #f8f9fa;
+  color: black;
+  padding: 10px 15px;
 }
 
 /* Space below the navbar */
