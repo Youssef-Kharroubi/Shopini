@@ -3,7 +3,6 @@ import {ProductDetailComponent} from './components/public/product-detail/product
 import {ProductListComponent} from './components/public/product-list/product-list.component';
 import {LoginComponent} from './components/auth/login/login.component';
 import {AuthGuard} from './guards/AuthGuard';
-import {SignUpComponent} from './components/auth/sign-up/sign-up.component';
 import {HomeComponent} from './components/public/home/home.component';
 import { ContactusComponent } from './components/public/contactus/contactus.component';
 import { ProductsManagementComponent } from './components/admin/products-management/products-management.component';
@@ -22,7 +21,6 @@ export const routes: Routes = [
   { path: 'productManagement',  component: ProductsManagementComponent, canActivate: [AdminGuard]},
   { path: 'usersManagement',  component: UsersManagementComponent, canActivate: [AdminGuard]},
   { path: 'HomeAdmin', component: HomeAdminComponent, canActivate: [AdminGuard]},
-  { path: 'signup', component: SignUpComponent},
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: 'products' }
 ];
