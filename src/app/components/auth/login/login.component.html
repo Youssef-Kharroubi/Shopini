@@ -12,29 +12,29 @@
       <div class="col">
         <!-- Full Name -->
         <div class="input-container">
-          <input 
-            id="fullName" 
-            formControlName="fullName" 
-            class="form-control" 
-            type="text" 
-            placeholder="Full Name" 
-            (keydown)="allowOnlyLetters($event)" 
+          <input
+            id="username"
+            formControlName="username"
+            class="form-control"
+            type="text"
+            placeholder="Full Name"
+            (keydown)="allowOnlyLetters($event)"
             required
-            [ngClass]="{'invalid': profileForm.get('fullName')?.touched && profileForm.get('fullName')?.hasError('required'), 'valid': profileForm.get('fullName')?.valid}">
-          <span *ngIf="profileForm.get('fullName')?.touched && profileForm.get('fullName')?.hasError('required')" class="text-danger">
+            [ngClass]="{'invalid': profileForm.get('username')?.touched && profileForm.get('username')?.hasError('required'), 'valid': profileForm.get('username')?.valid}">
+          <span *ngIf="profileForm.get('username')?.touched && profileForm.get('username')?.hasError('required')" class="text-danger">
             <span class="exclamation">!</span> Please type in your name.
           </span>
         </div>
 
         <!-- Phone Number -->
         <div class="input-container">
-          <input 
-            id="phone" 
-            formControlName="phone" 
-            class="form-control" 
-            type="tel" 
-            placeholder="Phone number" 
-            (keydown)="allowOnlyNumbers($event)" 
+          <input
+            id="phone"
+            formControlName="phone"
+            class="form-control"
+            type="tel"
+            placeholder="Phone number"
+            (keydown)="allowOnlyNumbers($event)"
             [ngClass]="{'invalid': profileForm.get('phone')?.touched && (profileForm.get('phone')?.hasError('required') || profileForm.get('phone')?.hasError('pattern')), 'valid': profileForm.get('phone')?.valid}">
           <span *ngIf="profileForm.get('phone')?.touched && profileForm.get('phone')?.hasError('required')" class="text-danger">
             <span class="exclamation">!</span> Phone Number is required
@@ -46,12 +46,12 @@
 
         <!-- Birth Date -->
         <div class="input-container">
-          <input 
-            id="birthDate" 
-            formControlName="birthDate" 
-            class="form-control" 
-            type="date" 
-            [max]="today" 
+          <input
+            id="birthDate"
+            formControlName="birthDate"
+            class="form-control"
+            type="date"
+            [max]="today"
             placeholder="Enter your birth date"
             [ngClass]="{'invalid': profileForm.get('birthDate')?.hasError('required'), 'valid': profileForm.get('birthDate')?.valid}">
           <span *ngIf="profileForm.get('birthDate')?.hasError('required')" class="text-danger">
@@ -64,12 +64,12 @@
       <div class="col">
         <!-- Email -->
         <div class="input-container">
-          <input 
-            id="email" 
-            formControlName="email" 
-            class="form-control" 
-            type="email" 
-            placeholder="Email" 
+          <input
+            id="email"
+            formControlName="email"
+            class="form-control"
+            type="email"
+            placeholder="Email"
             [ngClass]="{'invalid': profileForm.get('email')?.touched && (profileForm.get('email')?.hasError('required') || profileForm.get('email')?.hasError('email')), 'valid': profileForm.get('email')?.valid}">
           <span *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.hasError('required')" class="text-danger">
             <span class="exclamation">!</span> Email is required
@@ -81,12 +81,12 @@
 
         <!-- Password -->
         <div class="input-container">
-          <input 
-            id="password" 
-            formControlName="password" 
-            class="form-control" 
-            type="password" 
-            placeholder="Password" 
+          <input
+            id="password"
+            formControlName="password"
+            class="form-control"
+            type="password"
+            placeholder="Password"
             [ngClass]="{'invalid': profileForm.get('password')?.touched && (profileForm.get('password')?.hasError('required') || profileForm.get('password')?.hasError('minlength')), 'valid': profileForm.get('password')?.valid}">
           <span *ngIf="profileForm.get('password')?.touched && profileForm.get('password')?.hasError('required')" class="text-danger">
             <span class="exclamation">!</span> Password is required
@@ -96,19 +96,19 @@
           </span>
         </div>
 
-        <!-- Status (Role) -->
+
         <div class="input-container">
-          <select 
-            id="status" 
-            formControlName="status" 
-            class="form-select" 
-            placeholder="Select a role" 
-            [ngClass]="{'invalid': profileForm.get('status')?.touched && profileForm.get('status')?.hasError('required'), 'valid': profileForm.get('status')?.valid}">
+          <select
+            id="role"
+            formControlName="role"
+            class="form-select"
+            placeholder="Select a role"
+            [ngClass]="{'invalid': profileForm.get('role')?.touched && profileForm.get('role')?.hasError('required'), 'valid': profileForm.get('role')?.valid}">
             <option value="" disabled selected>Select a role</option>
             <option value="admin">Admin</option>
             <option value="customer">Customer</option>
           </select>
-          <span *ngIf="profileForm.get('status')?.touched && profileForm.get('status')?.hasError('required')" class="text-danger">
+          <span *ngIf="profileForm.get('role')?.touched && profileForm.get('role')?.hasError('required')" class="text-danger">
             <span class="exclamation">!</span> Please select a role.
           </span>
         </div>

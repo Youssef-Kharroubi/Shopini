@@ -28,7 +28,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(
-    fullName: string,
+    username: string,
     email: string,
     phone: string,
     password: string,
@@ -37,7 +37,7 @@ export class AuthService {
     role: string
   ): Observable<any> {
     const newCustomer = {
-      fullName,
+      username,
       email,
       phone,
       password,
@@ -63,15 +63,13 @@ export class AuthService {
     return this.http.get<User[]>(this.apiUrl).pipe(
       map((users) => {
         const user = users.find((f) => f.username === firstName && f.password === password);
-        console.log('User found:', user);
         if (user) {
           this.loggedIn.next(true);
           const token = this.generateToken();
           localStorage.setItem('authToken', token);
           localStorage.setItem('role', user.role);
-          console.log(user.role);
           if (user.role === 'admin') {
-            this.router.navigate(['/productManagement']);
+            this.router.navigate(['/HomeAdmin']);
           } else {
             this.router.navigate(['/products']);
           }
