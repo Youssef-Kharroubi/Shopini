@@ -37,6 +37,7 @@ export class AddProductComponent implements OnInit {
       image: [data.product.image || ''],
       category: [data.product.category || '', Validators.required],
       description: [data.product.description || '', [Validators.required, Validators.minLength(10)]],
+      releaseDate: [data.product.releaseDate || new Date(), [Validators.required]],
     });
     this.categories = data.categories;
   }

@@ -33,7 +33,12 @@
       <small *ngIf="productForm.get('description')?.errors?.['required']">Description is required.</small>
       <small *ngIf="productForm.get('description')?.errors?.['minlength']">Description must be at least 10 characters long.</small>
     </div>
-
+    <label>Release Date:</label>
+    <input type="text" formControlName="releaseDate" name="releaseDate" required />
+    <div *ngIf="productForm.get('releaseDate')?.invalid && productForm.get('releaseDate')?.touched">
+      <small *ngIf="productForm.get('releaseDate')?.errors?.['required']">releaseDate is required.</small>
+      <small *ngIf="productForm.get('releaseDate')?.errors?.['ontimeupdate']">Description must be at least 10 characters long.</small>
+    </div>
     <div class="d-flex justify-content-between">
       <label>Category</label>
       <mat-select formControlName="category">

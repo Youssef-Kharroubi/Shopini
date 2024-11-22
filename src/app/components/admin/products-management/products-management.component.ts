@@ -53,7 +53,7 @@ import {HttpClientModule} from '@angular/common/http';
   styleUrls: ['./products-management.component.css']
 })
 export class ProductsManagementComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'price', 'description','category','isAvailable', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'price', 'description','category','isAvailable','releaseDate','actions'];
   dataSource = new MatTableDataSource<Product>();
   categories: string[] = ['Electronics', 'Clothes', 'Books', 'Home', 'Sports'];
 

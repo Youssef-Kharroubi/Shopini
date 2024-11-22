@@ -12,6 +12,10 @@
 
   <label>Description:</label>
   <input type="text" [(ngModel)]="product.description" name="description" required />
+
+  <label>Release Date</label>
+  <input type="date" [(ngModel)]="product.releaseDate" name="releaseDate" required>
+
 <div class="d-flex justify-content-between">
     <label>is Available:</label>
     <input type="checkbox" [(ngModel)]="product.isAvailable" name="isAvailable" />
