@@ -5,21 +5,23 @@ import { Product } from '../../../models/product';
 import {Location, NgIf} from '@angular/common';
 import { ApiService } from '../../../services/api.service';
 import {highlightPipe} from '../../../pipes/highlight.pipe';
+import {AvailabilityPipe} from '../../../pipes/availability.pipe';
+import {DisplayDatePipe} from '../../../pipes/display-date.pipe';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [HttpClientModule, NgIf,highlightPipe],
+  imports: [HttpClientModule, NgIf, highlightPipe, AvailabilityPipe, DisplayDatePipe],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
   id!: string;
-  product: any;  // Allow product to be undefined initially
+  product: any;
   sourceParam: string | null = null;
   constructor(
     private route: ActivatedRoute,
-    private location: Location,  // Inject the Location service
+    private location: Location,
     private http: HttpClient,
     private apiService: ApiService
   ) {}
@@ -38,9 +40,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   fetchProductDetails(idParam: string, sourceParam: string | null): void {
-
     if ('api' !== sourceParam) {
-
       this.http.get<{ products: Product[] }>('assets/products.json').subscribe(
         (response) => {
           if (response && Array.isArray(response.products)) {
