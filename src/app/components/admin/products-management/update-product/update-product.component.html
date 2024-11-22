@@ -10,10 +10,12 @@
   <label>Photo URL:</label>
   <input type="text"  [(ngModel)]="product.image" name="image" required />
 
-
   <label>Description:</label>
   <input type="text" [(ngModel)]="product.description" name="description" required />
-
+<div class="d-flex justify-content-between">
+    <label>is Available:</label>
+    <input type="checkbox" [(ngModel)]="product.isAvailable" name="isAvailable" />
+</div>
     <div class="d-flex">
     <label >category:</label>
     <mat-select  [(ngModel)]="product.category" name="category" required>

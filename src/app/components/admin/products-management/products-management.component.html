@@ -56,6 +56,11 @@
         <td mat-cell *matCellDef="let product">{{ product.description }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="isAvailable">
+        <th mat-header-cell *matHeaderCellDef>Availability</th>
+        <td mat-cell *matCellDef="let product">{{ product.isAvailable }}</td>
+      </ng-container>
+
       <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef>Category</th>
         <td mat-cell *matCellDef="let product">{{ product.category }}</td>
