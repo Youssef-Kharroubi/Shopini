@@ -99,7 +99,6 @@ onSignUp() {
       .subscribe(
         (response) => {
           console.log('Customer successfully signed up:', response);
-          this.router.navigate(['/login']);
         },
         (error) => {
           console.error('Error during sign-up:', error);

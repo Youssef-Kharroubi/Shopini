@@ -50,7 +50,8 @@ export class AuthService {
 
     return this.http.post<any>(this.apiUrl, newCustomer).pipe(
       tap(response => {
-        console.log('POST response:', response); // Confirm successful POST response
+        console.log('POST response:', response);
+        this.router.navigate(['/home']);
       }),
       catchError((error) => {
         console.error('Error during POST request:', error);  // Handle error if any
