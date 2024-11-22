@@ -14,6 +14,7 @@ body {
   #container {
 	flex: 1; /* Allow container to grow and fill available space */
 	display: flex;
+    margin-bottom: 70px;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
