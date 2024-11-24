@@ -1,5 +1,3 @@
-
-
 /* Center the container */
 body {
 	margin: 0;
@@ -9,11 +7,13 @@ body {
 	flex-direction: column; /* Stack elements vertically */
 	background-color: #f7f7f7; /* Optional: background color for contrast */
   }
-  
+
   /* Container takes up the available space between the navbar and footer */
   #container {
 	flex: 1; /* Allow container to grow and fill available space */
 	display: flex;
+    margin-top:100px;
+    margin-bottom: 120px;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
@@ -23,7 +23,7 @@ body {
 	background-color: #fff;
 	border-radius: 10px;
   }
-  
+
 
 
 h1 {
@@ -51,7 +51,7 @@ span {
 .bold-text {
 	font-weight: bold;
   }
-  
+
 a {
 	color: #333;
 	font-size: 14px;
@@ -61,8 +61,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #8B4513; /* Changed to a darker brown for contrast */
-	background-color: #8B4513; /* Set to a warm brown to complement burlywood */
+	border: 1px solid darkred; /* Changed to a darker brown for contrast */
+	background-color: red; /* Set to a warm brown to complement burlywood */
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -73,24 +73,24 @@ button {
 }
 
 button:hover {
-	background-color: #A0522D; /* Lighter brown/orange shade for hover effect */
+	background-color: #FFA07A; /* Lighter brown/orange shade for hover effect */
 }
 
-  
-  
+
+
   button:active {
 	transform: scale(0.95);
   }
-  
+
   button:focus {
 	outline: none;
   }
-  
+
   button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
   }
-  
+
 
 form {
 	background-color: #FFFFFF;
@@ -114,7 +114,7 @@ input {
 .container {
 	background-color: #fff;
 	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
@@ -160,7 +160,7 @@ input {
 		opacity: 0;
 		z-index: 1;
 	}
-	
+
 	50%, 100% {
 		opacity: 1;
 		z-index: 5;
@@ -286,14 +286,14 @@ footer a {
 	justify-content: space-between;
 	gap: 1rem; /* Optional: Adjust gap between columns */
   }
-  
+
   .form-container .col {
 	flex: 1; /* Equal width columns */
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem; /* Spacing between inputs */
   }
-  
+
   input {
 	width: 100%;
 	padding: 10px;
@@ -301,14 +301,14 @@ footer a {
 	border: 1px solid #ccc;
 	border-radius: 4px;
   }
-  
+
   /*.vertical-line {
 	width: 1px;
 	height: 100%;
 	background-color: #ccc;
 	margin: auto;
   }*/
-	  
+
 
 /* Style for invalid fields */
 .input-container input.invalid {
@@ -320,12 +320,12 @@ footer a {
 	border: 2px solid green;
 	background-color: #d4edda; /* Optional: adds a light green background */
   }
-  
+
   .error-message {
 	color: red;
 	font-size: 12px;
   }
-  
+
   .exclamation {
 	color: white; /* White text color for contrast */
 	background-color: red; /* Red background color */
@@ -339,4 +339,33 @@ footer a {
 	height: 20px; /* Set the height of the circle */
 	font-size: 12px; /* Adjust the size of the exclamation mark */
   }
+
+  /*Forgot Password CSS:*/
+  .modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .modal-content {
+	background: white;
+	padding: 20px;
+	border-radius: 5px;
+	text-align: center;
+	width: 300px;
+  }
+  
+  input {
+	width: 80%;
+	padding: 10px;
+	margin: 10px 0;
+  }
+  
+  
   

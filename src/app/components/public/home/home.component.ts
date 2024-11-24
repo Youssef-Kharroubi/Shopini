@@ -12,6 +12,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   onGetStarted() {
-    this.router.navigate(['/login']); // Navigate to login page
+    this.router.navigate(['/products']); 
   }
 }

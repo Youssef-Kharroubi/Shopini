@@ -6,6 +6,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {NgClass} from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ForgotPasswordComponent } from '../../../components/forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-login',
@@ -25,34 +27,37 @@ export class LoginComponent implements OnInit{
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private dialog: MatDialog) {}
   onLogin() {
-    // If the form is invalid, don't submit and mark all fields as touched to show validation messages
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
     }
-  
+
     const userData = this.loginForm.value;
-    const username = userData.username || '';
-    const password = userData.password || '';
+   
+    const username = this.loginForm.get('username')?.value;
+    const password = this.loginForm.get('password')?.value;
   
-    this.authService.login(username, password).subscribe(
-      (user) => {
-        console.log('Login successful:', user);
-        // Navigate to the dashboard or another page after successful login
-        this.router.navigate(['/dashboard']);
-      },
-      (error) => {
-        console.error('Error during login:', error);
-        alert('Login failed. Please check your credentials.');
-      }
-    );
+    
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('userPassword');
+  
+  
+  if (username === storedUsername && password === storedPassword) {
+   
+    localStorage.setItem('authToken', 'valid-token');  
+    localStorage.setItem('role', 'user');  
+    this.router.navigate(['/home']);  
+  } else {
+    
+    alert('Invalid username or password');
   }
-  
+  }
+
  ngOnInit(): void {
   this.profileForm = this.formBuilder.group({
-    fullName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    username: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required, Validators.pattern('^[0-9]{8}$')]],
     password: [
@@ -90,50 +95,54 @@ toggleSignIn(): void {
 onSignUp() {
   if (this.profileForm.invalid) {
     this.profileForm.markAllAsTouched(); // Make all fields touched to show validation errors
-    return;
   }
   const userData = this.profileForm.value;
+  console.log(userData.role)
     const role = userData.isAdmin ? 'admin' : 'customer';
     this.profileForm.patchValue({ role: role });
 
     // Send the data to json-server
     this.authService
       .signUp(
-        userData.fullName,
+        userData.username,
         userData.email,
         userData.phone,
         userData.password,
         userData.birthDate,
         userData.status,
-        role
+        userData.role
       )
       .subscribe(
         (response) => {
-          console.log('Customer successfully signed up:', response); // Confirm success
-          this.router.navigate(['/login']); // Navigate to login after success
+          console.log('Customer successfully signed up:', response);
         },
         (error) => {
-          console.error('Error during sign-up:', error); // Log error if it occurs
+          console.error('Error during sign-up:', error);
         }
       );
   }
 
   allowOnlyLetters(event: KeyboardEvent) {
     const charCode = event.key.charCodeAt(0);
-    // Allow uppercase and lowercase letters (A-Z, a-z)
     if (!((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122))) {
       event.preventDefault();
     }
   }
 
-  // Allow only numeric values, Backspace, and Enter keys
   allowOnlyNumbers(event: KeyboardEvent): void {
     const key = event.key;
-    // Allow numeric values, Backspace, and Enter keys
     if (!/[\d]/.test(key) && key !== 'Backspace' && key !== 'Enter') {
       event.preventDefault();
     }
   }
 
 
+ 
+  openForgotPasswordDialog() {
+    this.dialog.open(ForgotPasswordComponent, {
+      width: '400px'  
+    });
+  }
+
 }
+

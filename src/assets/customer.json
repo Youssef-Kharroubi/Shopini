@@ -123,6 +123,132 @@
       "password": "",
       "email": "admin",
       "role": "customer"
+    },
+    {
+      "id": "55aa",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "password": "",
+      "birthDate": "2024-11-19",
+      "address": {
+        "street": "",
+        "city": "",
+        "district": "",
+        "state": "",
+        "zip": ""
+      },
+      "status": "",
+      "role": "customer"
+    },
+    {
+      "id": "853d",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "password": "",
+      "birthDate": "2024-11-19",
+      "address": {
+        "street": "",
+        "city": "",
+        "district": "",
+        "state": "",
+        "zip": ""
+      },
+      "status": "",
+      "role": "customer"
+    },
+    {
+      "id": "0271",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "password": "",
+      "birthDate": "",
+      "address": {
+        "street": "",
+        "city": "",
+        "district": "",
+        "state": "",
+        "zip": ""
+      },
+      "status": "",
+      "role": "customer"
+    },
+    {
+      "id": "bb70",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "password": "",
+      "birthDate": "",
+      "address": {
+        "street": "",
+        "city": "",
+        "district": "",
+        "state": "",
+        "zip": ""
+      },
+      "status": "",
+      "role": "customer"
+    },
+    {
+      "id": "fad4",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "password": "",
+      "birthDate": "",
+      "address": {
+        "street": "",
+        "city": "",
+        "district": "",
+        "state": "",
+        "zip": ""
+      },
+      "status": "",
+      "role": "customer"
+    },
+    {
+      "id": "9588",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "password": "",
+      "birthDate": "",
+      "address": {
+        "street": "",
+        "city": "",
+        "district": "",
+        "state": "",
+        "zip": ""
+      },
+      "status": "",
+      "role": "customer"
+    },
+    {
+      "id": "15bf",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "password": "",
+      "birthDate": "",
+      "address": {
+        "street": "",
+        "city": "",
+        "district": "",
+        "state": "",
+        "zip": ""
+      },
+      "status": "",
+      "role": "customer"
     }
   ]
 }

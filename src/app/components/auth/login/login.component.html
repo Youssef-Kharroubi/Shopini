@@ -159,8 +159,10 @@
         <span class="exclamation">!</span> Please enter your password.
       </div>
     </div>
+<!-- Forgot password link -->
+<a (click)="openForgotPasswordDialog()" class="underline-link">Forgot your password?</a>
 
-    <a href="#" class="underline-link">Forgot your password?</a>
+
 
     <!-- Error message for incomplete fields -->
     <div *ngIf="loginForm.invalid && (loginForm.get('username')?.touched || loginForm.get('password')?.touched)" class="error-message">

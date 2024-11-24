@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, catchError, map, Observable, throwError} from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export interface User {
   username: string;

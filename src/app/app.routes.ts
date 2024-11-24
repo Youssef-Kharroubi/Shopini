@@ -11,7 +11,12 @@ import { AboutusComponent } from './components/public/aboutus/aboutus.component'
 import {AdminGuard} from './guards/adminGuard';
 import { UsersManagementComponent } from './components/admin/users-management/users-management.component';
 import {HomeAdminComponent} from './components/admin/home-admin/home-admin.component';
-
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { AppComponent } from './app.component';
+import { MatDialogModule } from '@angular/material/dialog';
 export const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -24,5 +29,7 @@ export const routes: Routes = [
   { path: 'HomeAdmin', component: HomeAdminComponent, canActivate: [AdminGuard]},
   { path: 'signup', component: SignUpComponent},
   { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: 'products' }
+  { path: '**', redirectTo: 'products' },
+  { path: 'password', component: ForgotPasswordComponent },
+
 ];
