@@ -3,7 +3,10 @@ import { UserService } from '../../../services/user.service';
 import { ProductService } from '../../../services/product.service';
 import { Customer } from '../../../models/customer';
 import { Product } from '../../../models/product';
+import {MatDialog} from '@angular/material/dialog';
 import {KeyValuePipe, NgForOf} from '@angular/common';
+import {AddUserComponent} from '../users-management/add-user/add-user.component';
+import {UpdatePasswordComponent} from './update-password/update-password.component';
 
 @Component({
   selector: 'app-home-admin',
@@ -20,7 +23,7 @@ export class HomeAdminComponent implements OnInit {
 
   userStatistics: { total: number, admin: number, customer: number } = { total: 0, admin: 0, customer: 0 };
 
-  constructor(private userService: UserService, private productService: ProductService) {}
+  constructor(private userService: UserService, private productService: ProductService,private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.fetchProductStatistics();
@@ -44,6 +47,14 @@ export class HomeAdminComponent implements OnInit {
       this.userStatistics.total = users.length;
       this.userStatistics.admin = users.filter(user => user.role === 'admin').length;
       this.userStatistics.customer = users.filter(user => user.role === 'customer').length;
+    });
+  }
+  update(): void{
+    const dialogRef = this.dialog.open(UpdatePasswordComponent,{
+      width: '400px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 }
