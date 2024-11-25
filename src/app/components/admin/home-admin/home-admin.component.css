@@ -7,7 +7,21 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.updatePWD{
+  display: block;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.updatePWD:hover {
+  background-color: #45a049;
+}
 h2 {
   font-size: 1.6rem;
   color: #333;
