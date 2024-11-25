@@ -1,16 +1,14 @@
 <div class="container" id="container">
 <!-- Sign-up form -->
 <div class="form-container sign-up-container">
-  <form [formGroup]="profileForm" (ngSubmit)="onSignUp()">  <!-- Use profileForm here -->
+  <form [formGroup]="profileForm" (ngSubmit)="onSignUp()">
     <span style="font-weight: bold; font-size: 24px; text-decoration: underline; text-decoration-thickness: 5px;">Create your account</span>
 
     <br>
 
-
     <div class="row">
-      <!-- First Column -->
+
       <div class="col">
-        <!-- Full Name -->
         <div class="input-container">
           <input
             id="username"

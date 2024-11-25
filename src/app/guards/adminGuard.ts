@@ -1,4 +1,3 @@
-// admin.guard.ts
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -11,9 +10,8 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.authService.checkAuthStatus() && this.authService.isAdmin()) {
-      return true; // Admin can access
+      return true;
     }
-
     this.router.navigate(['/login']);
     return false;
   }

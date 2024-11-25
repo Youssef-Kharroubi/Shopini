@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
 import {Observable, switchMap} from 'rxjs';
 import { Customer } from '../models/customer';
 import { map } from 'rxjs/operators';
@@ -11,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class UserService {
   private apiUrl = 'http://localhost:3000/customers';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
   public getUsers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.apiUrl);
   }

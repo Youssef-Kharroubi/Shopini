@@ -1,30 +1,27 @@
 <header class="navbar" *ngIf="getUserRole() === 'admin'">
-  <!-- Logo Section for Admin -->
   <div class="navbar-left">
     <img src="/public/ecommercelogoo.png" alt="E-commerce Logo" class="brand-logo">
   </div>
-  
 
-  <!-- Admin Navigation Links -->
+
   <div class="navbar-links">
     <a class="navbar-link" routerLink="/HomeAdmin">Admin Dashboard</a>
     <a class="navbar-link" routerLink="/productManagement">Manage Products</a>
     <a class="navbar-link" routerLink="/usersManagement">Manage Users</a>
   </div>
 
-  <!-- Logout Button -->
+
   <div class="navbar-right">
     <button class="logout" (click)="onLogout()">Logout</button>
   </div>
 </header>
 
 <header class="navbar" *ngIf="getUserRole() !== 'admin'">
-  <!-- Logo Section for Non-Admin -->
+
   <div class="navbar-left">
     <img src="/public/ecommercelogoo.png" alt="E-commerce Logo" class="brand-logo">
   </div>
 
-  <!-- Non-Admin Navigation Links -->
   <div class="navbar-links">
     <a class="navbar-link" routerLink="/home">Home</a>
     <a class="navbar-link" routerLink="/products">Products</a>
@@ -32,7 +29,7 @@
     <a class="navbar-link" routerLink="/contact">Contact</a>
   </div>
 
-  <!-- Login/Signup or Logout Button -->
+
   <div class="navbar-right">
     <ng-container *ngIf="!(logedInUser); else loggedIn">
       <button class="login-signup-btn" routerLink="/login">Login/Signup</button>

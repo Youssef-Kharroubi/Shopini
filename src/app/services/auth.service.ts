@@ -35,7 +35,7 @@ export class AuthService {
     birthDate: string,
     status: string,
     role: string
-  ): Observable<any> {
+  ): Observable<Customer> {
     const newCustomer = {
       username,
       email,
@@ -48,7 +48,7 @@ export class AuthService {
 
     console.log('Sending POST request with data:', newCustomer);
 
-    return this.http.post<any>(this.apiUrl, newCustomer).pipe(
+    return this.http.post<Customer>(this.apiUrl, newCustomer).pipe(
       tap(response => {
         console.log('POST response:', response);
         this.router.navigate(['/home']);

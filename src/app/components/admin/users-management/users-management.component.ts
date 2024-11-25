@@ -15,7 +15,6 @@ import {Customer as User} from '../../../models/customer';
 import {MatPaginator} from '@angular/material/paginator';
 import {UserService} from '../../../services/user.service';
 import {MatDialog} from '@angular/material/dialog';
-import {filter} from 'rxjs';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { AddUserComponent} from './add-user/add-user.component';
 import {MatInputModule} from '@angular/material/input';

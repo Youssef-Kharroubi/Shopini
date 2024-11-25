@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import {ProductDetailComponent} from './components/public/product-detail/product-detail.component';
 import {ProductListComponent} from './components/public/product-list/product-list.component';
 import {LoginComponent} from './components/auth/login/login.component';
-import {AuthGuard} from './guards/AuthGuard';
 import {HomeComponent} from './components/public/home/home.component';
 import { ContactusComponent } from './components/public/contactus/contactus.component';
 import { ProductsManagementComponent } from './components/admin/products-management/products-management.component';
