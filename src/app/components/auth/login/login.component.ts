@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit{
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
+  emailError: any;
   constructor(private authService: AuthService, private router: Router) {}
   onLogin() {
     if (this.loginForm.invalid) {
@@ -102,6 +103,11 @@ onSignUp() {
         },
         (error) => {
           console.error('Error during sign-up:', error);
+          if (error.message === 'Email already exists') {
+            this.emailError = 'Email already exists. Please use a different email.';
+          } else {
+            this.emailError = 'An error occurred during sign-up. Please try again.';
+          }
         }
       );
   }

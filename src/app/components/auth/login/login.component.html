@@ -76,7 +76,9 @@
             <span class="exclamation">!</span> Please enter a valid email
           </span>
         </div>
-
+        <div *ngIf="emailError" class="error-message">
+          <span class="exclamation">!</span> {{ emailError }}
+        </div>
         <!-- Password -->
         <div class="input-container">
           <input

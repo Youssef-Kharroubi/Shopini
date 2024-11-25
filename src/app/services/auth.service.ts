@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {BehaviorSubject, catchError, map, Observable, throwError} from 'rxjs';
+import {BehaviorSubject, catchError, map, Observable, switchMap, throwError} from 'rxjs';
 import { Router } from '@angular/router';
 import { Customer } from "../models/customer"
 import { tap } from 'rxjs/operators';
@@ -48,13 +48,21 @@ export class AuthService {
 
     console.log('Sending POST request with data:', newCustomer);
 
-    return this.http.post<Customer>(this.apiUrl, newCustomer).pipe(
+    return this.http.get<Customer[]>(this.apiUrl).pipe(
+      map((users) => {
+        const userExists = users.some((user) => user.email === email);
+        if (userExists) {
+          throw new Error('Email already exists');
+        }
+        return newCustomer;
+      }),
+      switchMap((customer) => this.http.post<Customer>(this.apiUrl, customer)),
       tap(response => {
         console.log('POST response:', response);
         this.router.navigate(['/home']);
       }),
       catchError((error) => {
-        console.error('Error during POST request:', error);  // Handle error if any
+        console.error('Error during POST request:', error);
         throw error;
       })
     );
