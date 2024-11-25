@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, catchError, map, Observable, throwError} from 'rxjs';
 import { Router } from '@angular/router';
+import { Customer } from "../models/customer"
 import { tap } from 'rxjs/operators';
 
 export interface User {
+  id:string;
   username: string;
   lastName: string;
   email: string;
@@ -14,8 +16,6 @@ export interface User {
   status: string;
   role: string;
 }
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -60,8 +60,8 @@ export class AuthService {
     );
   }
 
-  login(firstName: string, password: string): Observable<User> {
-    return this.http.get<User[]>(this.apiUrl).pipe(
+  login(firstName: string, password: string): Observable<Customer> {
+    return this.http.get<Customer[]>(this.apiUrl).pipe(
       map((users) => {
         const user = users.find((f) => f.username === firstName && f.password === password);
         if (user) {
@@ -69,12 +69,13 @@ export class AuthService {
           const token = this.generateToken();
           localStorage.setItem('authToken', token);
           localStorage.setItem('role', user.role);
+          localStorage.setItem('id', user.id);
           if (user.role === 'admin') {
             this.router.navigate(['/HomeAdmin']);
           } else {
             this.router.navigate(['/products']);
           }
-          return user; // Return user data for potential further use
+          return user;
         } else {
           throw new Error('Invalid username or password');
         }
@@ -90,6 +91,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('authToken');
     localStorage.removeItem('role');
+    localStorage.removeItem('id');
     this.loggedIn.next(false);
 
   }
