@@ -17,7 +17,83 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   height: 60px; /* Explicit height for navbar */
 }
+select {
+  appearance: none; /* Removes default styles */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 viewBox%3D%220 0 4 5%22%3E%3Cpath fill%3D%22%23333%22 d%3D%22M2 0L0 2h4z%22/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
 
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+select:hover {
+  border-color: #888;
+}
+
+/* Optional: Add styles for invalid or disabled states */
+select:disabled {
+  background-color: #f9f9f9;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+select:invalid {
+  border-color: #e74c3c;
+}
+input[type="search"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="search"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+input[type="search"]:hover {
+  border-color: #888;
+}
+
+/* Placeholder styling */
+input[type="search"]::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Optional: Disabled and invalid states */
+input[type="search"]:disabled {
+  background-color: #f9f9f9;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+input[type="search"]:invalid {
+  border-color: #e74c3c;
+}
 main {
   flex: 1;
   margin-top: 60px; /* Match navbar height */
